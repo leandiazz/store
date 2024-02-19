@@ -1,7 +1,9 @@
 import api from "@/api";
 
-export const page = async () => {
+async function page() {
   const products = await api.list();
   console.log(products);
   return <div>page</div>;
-};
+}
+
+export default page;
