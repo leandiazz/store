@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Link from "next/link";
-import NavBar from "@/(components)/NavBar";
+import NavBar from "./(components)/NavBar";
 
 export const metadata: Metadata = {
   title: "Cruel Summer",
