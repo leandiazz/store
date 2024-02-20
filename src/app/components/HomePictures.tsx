@@ -1,12 +1,9 @@
-import * as React from "react";
+"use client";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from "@/components/ui/carousel";
+import * as React from "react";
+import Autoplay from "embla-carousel-autoplay";
+
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const images = [
   { src: "/1.jpeg", alt: "1.jpeg" },
@@ -16,17 +13,24 @@ const images = [
 ];
 
 export function HomePictures() {
+  const plugin = React.useRef(Autoplay({ delay: 2500, stopOnInteraction: false }));
+
   return (
-    <Carousel>
-      <CarouselContent>
-        {images.map(image => (
-          <CarouselItem key={image.src} className="overflow-hidden min-w-full h-screen">
-            <img src={image.src} alt={image.alt} className="bg-cover" />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className="flex justify-center items-center w-full h-[95vh] p-0 m-0">
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-full h-full"
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
+        <CarouselContent>
+          {images.map(image => (
+            <CarouselItem key={image.src}>
+              <img src={image.src} alt={image.alt} className="w-full h-[907px] object-cover" />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </div>
   );
 }

@@ -15,8 +15,6 @@ import {
   NavigationMenuIndicator,
   NavigationMenuViewport
 } from "@/components/ui/navigation-menu";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const DropdownProductos: { title: string; href: string }[] = [
@@ -36,11 +34,15 @@ export default function Navbar() {
     <header className="flex justify-between">
       <Link
         href="/"
-        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-purple-200 font-medium text-xl"
+        className="block select-none p-3 leading-none font-medium hover:bg-purple-200 "
       >
         Cruel Summer
       </Link>
-      <NavigationMenu>
+
+      {/* Vista celular */}
+
+      {/* Vista dispositivo grande */}
+      <NavigationMenu className="hidden sm:block">
         <NavigationMenuList>
           {/* USER MENU */}
           <NavigationMenuItem>

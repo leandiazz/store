@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Link from "next/link";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
