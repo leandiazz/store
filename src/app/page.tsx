@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HomePictures } from "./components/HomePictures";
 
 export default async function Home() {
   const targets = [
@@ -32,7 +33,7 @@ export default async function Home() {
 
   return (
     <>
-      <Image src="/1.jpeg" width={1920} height={1080} alt="1" />
+      <HomePictures />
       <section className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 mt-10 p-10">
         {targets.map(target => {
           return (
