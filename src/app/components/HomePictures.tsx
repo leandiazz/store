@@ -1,36 +1,37 @@
 "use client";
 
-import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const images = [
-  { src: "/1.jpeg", alt: "1.jpeg" },
-  { src: "/2.jpeg", alt: "/2.jpeg" },
-  { src: "/3.jpg", alt: "/3.jpg" },
-  { src: "/4.jpg", alt: "/4.jpg" }
+  { src: "/1.jpeg", alt: "1.jpeg", width: 1080, heigth: 1298 },
+  { src: "/2.jpeg", alt: "/2.jpeg", width: 1080, heigth: 1315 },
+  { src: "/3.jpg", alt: "/3.jpg", width: 1080, heigth: 1350 },
+  { src: "/4.jpg", alt: "/4.jpg", width: 1079, heigth: 1344 }
 ];
 
 export function HomePictures() {
-  const plugin = React.useRef(Autoplay({ delay: 2500, stopOnInteraction: false }));
-
   return (
-    <div className="flex justify-center items-center w-full h-[95vh] p-0 m-0">
-      <Carousel
-        plugins={[plugin.current]}
-        className="w-full h-full"
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-      >
-        <CarouselContent>
-          {images.map(image => (
-            <CarouselItem key={image.src}>
-              <img src={image.src} alt={image.alt} className="w-full h-[907px] object-cover" />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
+    <Carousel
+      opts={{ loop: true }}
+      plugins={[Autoplay({ delay: 4000, stopOnInteraction: false })]}
+      className="p-0 m-0 h-full"
+    >
+      <CarouselContent className="ml-0">
+        {images.map(image => (
+          <CarouselItem key={image.src} className="pl-0">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.heigth}
+              className="w-full h-svh object-cover"
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   );
 }
