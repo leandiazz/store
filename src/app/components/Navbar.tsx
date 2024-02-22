@@ -27,6 +27,39 @@ import {
 
 import { Cart } from "./Cart";
 
+const items: { href: string; title: string; id: number }[] = [
+  {
+    href: "/productos",
+    title: "Todos los productos",
+    id: 1,
+  },
+  {
+    href: "/productos",
+    id: 2,
+    title: "Vestidos",
+  },
+  {
+    href: "/productos",
+    id: 3,
+    title: "Faldas",
+  },
+  {
+    href: "/productos",
+    id: 4,
+    title: "Tops",
+  },
+  {
+    href: "/productos",
+    id: 5,
+    title: "Pantalones",
+  },
+  {
+    href: "/productos",
+    id: 6,
+    title: "Remerones",
+  },
+];
+
 export default function Navbar() {
   const user = null;
 
@@ -61,6 +94,7 @@ export default function Navbar() {
               >
                 <SheetHeader>
                   <ul className="mt-20 flex flex-col gap-4 text-3xl">
+                    <Link href="#">Todos los productos</Link>
                     <Link href="#">Vestidos</Link>
                     <Link href="#">Faldas</Link>
                     <Link href="#">Tops</Link>
@@ -80,23 +114,37 @@ export default function Navbar() {
           <div className="flex justify-between md:hidden">
             <Cart />
           </div>
-          <NavigationMenu className="z-50 hidden md:block md:self-stretch">
+          <NavigationMenu className="z-50 hidden md:block">
             <NavigationMenuList>
               {/* PRODUCTS */}
+
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Productos</NavigationMenuTrigger>
-                <NavigationMenuContent className="absolute left-0 top-0 sm:w-auto">
-                  <ul className="grid w-max grid-cols-1 p-1">
-                    <ListItem href="#" title="Vestidos" />
-                    <ListItem href="#" title="Faldas" />
-                    <ListItem href="#" title="Pantalones" />
-                    <ListItem href="#" title="Remerones" />
-                    <ListItem href="#" title="Tops" />
-                  </ul>
+                <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
+                  {items.map((item) => {
+                    return (
+                      <Link
+                        href={item.href}
+                        key={item.id}
+                        legacyBehavior
+                        passHref
+                      >
+                        <NavigationMenuLink
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            "mx-2 my-1 w-[160px] hover:bg-purple-200",
+                          )}
+                        >
+                          <p>{item.title}</p>
+                        </NavigationMenuLink>
+                      </Link>
+                    );
+                  })}
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
               {/*  USER */}
+
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
