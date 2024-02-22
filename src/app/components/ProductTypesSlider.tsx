@@ -5,7 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
@@ -13,56 +13,56 @@ import Link from "next/link";
 const targets = [
   {
     id: 1,
-    title: "tops",
-    src: "/tops.jpeg"
+    title: "Tops",
+    src: "/tops.jpg",
   },
   {
     id: 2,
-    title: "faldas",
-    src: "/tops.jpeg"
+    title: "Faldas",
+    src: "/faldas.jpg",
   },
   {
     id: 3,
-    title: "pantalones",
-    src: "/tops.jpeg"
+    title: "Pantalones",
+    src: "/pantalones.jpg",
   },
   {
     id: 4,
-    title: "remerones",
-    src: "/remerones.jpeg"
+    title: "Remerones",
+    src: "/remerones.jpg",
   },
   {
     id: 5,
-    title: "vestidos",
-    src: "/vestidos.jpeg"
-  }
+    title: "Vestidos",
+    src: "/vestidos.jpg",
+  },
 ];
 
 const ProductTypesSlider = () => {
   return (
-    <div className="text-base leading-normal box-border relative pt-6 pb-6">
-      <h2 className="text-center text-2xl lg:text-3xl pb-2">
+    <div className="relative box-border pb-6 pt-6 text-base leading-normal">
+      <h2 className="pb-2 text-center text-2xl lg:text-3xl">
         <span>Nuestros productos</span>
       </h2>
       <div className="flex items-center justify-center">
         <Carousel
           opts={{ loop: true }}
           plugins={[Autoplay({ delay: 4000, stopOnInteraction: false })]}
-          className="max-w-[260px] lg:max-w-screen-xl "
+          className="max-w-[260px] lg:max-w-screen-md"
         >
           <CarouselContent>
-            {targets.map(target => (
+            {targets.map((target) => (
               <CarouselItem key={target.id} className="lg:basis-1/3">
-                <figure className="box-border relative">
+                <figure className="relative box-border">
                   <Link href={``}>
-                    <div className="w-full h-[280px] overflow-hidden">
+                    <div className="h-[280px] w-full overflow-hidden rounded-md">
                       <img
                         alt={target.title}
-                        className="object-cover w-full h-full"
+                        className="h-full w-full object-cover"
                         src={target.src}
                       />
                     </div>
-                    <figcaption className="text-white absolute bottom-3 left-3 right-3 text-3xl leading-1 overflow-ellipsis">
+                    <figcaption className="leading-1 absolute bottom-3 left-3 right-3 overflow-ellipsis text-3xl text-white">
                       {target.title}
                     </figcaption>
                   </Link>
