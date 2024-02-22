@@ -31,12 +31,30 @@ export default function Navbar() {
   const user = null;
 
   return (
-    <div className="sticky inset-x-0 top-0 z-50">
-      <header className="relative bg-white">
+    <div className="sticky inset-x-0 top-0 z-50 py-2">
+      <header className="relative">
         <div className="flex justify-between md:ml-8">
           <div className="flex justify-between md:hidden">
             <Sheet>
-              <SheetTrigger className="ml-3">Productos</SheetTrigger>
+              <SheetTrigger className="mx-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-menu-2"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 6l16 0" />
+                  <path d="M4 12l16 0" />
+                  <path d="M4 18l16 0" />
+                </svg>
+              </SheetTrigger>
               <SheetContent
                 side={"left"}
                 className="flex h-full w-full flex-col "
@@ -56,22 +74,11 @@ export default function Navbar() {
 
           {/*  LOGO  */}
           <Link href="/">
-            <p className="p-1 text-2xl ">Cruel Summer</p>
+            <p className="text-2xl ">Cruel Summer</p>
           </Link>
 
           <div className="flex justify-between md:hidden">
-            <Sheet>
-              <SheetTrigger className="mr-3">Abrir</SheetTrigger>
-              <SheetContent className="w-full">
-                <SheetHeader>
-                  <SheetTitle>Are you absolutely sure?</SheetTitle>
-                  <SheetDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
+            <Cart />
           </div>
           <NavigationMenu className="z-50 hidden md:block md:self-stretch">
             <NavigationMenuList>
