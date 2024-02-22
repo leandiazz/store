@@ -1,8 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 const targets = [
   {
@@ -64,6 +70,9 @@ const ProductTypesSlider = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
+
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       </div>
     </div>

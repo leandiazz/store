@@ -6,10 +6,10 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const images = [
-  { src: "/1.jpeg", alt: "1.jpeg", width: 1080, heigth: 1298 },
-  { src: "/2.jpeg", alt: "/2.jpeg", width: 1080, heigth: 1315 },
-  { src: "/3.jpg", alt: "/3.jpg", width: 1080, heigth: 1350 },
-  { src: "/4.jpg", alt: "/4.jpg", width: 1079, heigth: 1344 }
+  { src: "/first.jpg", alt: "first-pic", width: 1440, heigth: 1800 },
+  { src: "/second.jpg", alt: "second-pic", width: 1349, heigth: 1687 },
+  { src: "/third.jpg", alt: "third-pic", width: 1440, heigth: 1800 },
+  { src: "/fourth.jpg", alt: "fourth-pic", width: 1440, heigth: 1800 }
 ];
 
 export function HomePictures() {
