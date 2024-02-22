@@ -31,12 +31,12 @@ export default function Navbar() {
   const user = null;
 
   return (
-    <div className="sticky inset-x-0 top-0 z-50 py-2">
+    <div className="sticky inset-x-0 top-0 z-50 bg-white py-2">
       <header className="relative">
         <div className="flex justify-between md:ml-8">
           <div className="flex justify-between md:hidden">
             <Sheet>
-              <SheetTrigger className="mx-4">
+              <SheetTrigger className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-menu-2"
@@ -74,7 +74,7 @@ export default function Navbar() {
 
           {/*  LOGO  */}
           <Link href="/">
-            <p className="text-2xl ">Cruel Summer</p>
+            <p className="mt-1 text-2xl">Cruel Summer</p>
           </Link>
 
           <div className="flex justify-between md:hidden">
