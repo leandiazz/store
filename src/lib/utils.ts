@@ -12,12 +12,12 @@ export function formatPrice(
     notation?: Intl.NumberFormatOptions["notation"];
   } = {},
 ) {
-  const { currency = "ARS", notation = "compact" } = options;
+  const { currency = "ARS", notation = "standard" } = options;
   const numericPrice = typeof price === "string" ? parseFloat(price) : price;
   return new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency,
     notation,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 0,
   }).format(numericPrice);
 }
