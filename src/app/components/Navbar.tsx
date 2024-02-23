@@ -18,6 +18,7 @@ import {
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -77,11 +78,11 @@ export default function Navbar() {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M4 6l16 0" />
@@ -95,12 +96,11 @@ export default function Navbar() {
               >
                 <SheetHeader>
                   <ul className="mt-20 flex flex-col gap-4 text-3xl">
-                    <Link href="#">Todos los productos</Link>
-                    <Link href="#">Vestidos</Link>
-                    <Link href="#">Faldas</Link>
-                    <Link href="#">Tops</Link>
-                    <Link href="#">Pantalones</Link>
-                    <Link href="#">Remerones</Link>
+                    {items.map((item) => (
+                      <Link key={item.id} href={item.href}>
+                        <SheetClose>{item.title}</SheetClose>
+                      </Link>
+                    ))}
                   </ul>
                 </SheetHeader>
               </SheetContent>
@@ -145,7 +145,6 @@ export default function Navbar() {
               </NavigationMenuItem>
 
               {/*  USER */}
-
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -155,11 +154,11 @@ export default function Navbar() {
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       stroke="currentColor"
                       fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -194,7 +193,7 @@ export default function Navbar() {
                 </button>
               </NavigationMenuItem>
 
-              {/* CART */}
+              {/* SHIPPING CART */}
               <NavigationMenuItem>
                 <Cart />
               </NavigationMenuItem>

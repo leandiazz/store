@@ -2,7 +2,7 @@ import api from "@/api";
 import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 
-async function page() {
+export default async function page() {
   const products = await api.list();
 
   return (
@@ -58,5 +58,3 @@ async function page() {
     </div>
   );
 }
-
-export default page;

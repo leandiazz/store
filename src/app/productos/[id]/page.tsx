@@ -2,7 +2,32 @@ import api from "@/api";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
-async function page({ params: { id } }: { params: { id: string } }) {
+export async function generateMetadata({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  const producto = await api.fetch(Number(id));
+  return {
+    title: `${producto.name} - Cruel Summer`,
+    description: producto.description,
+  };
+}
+
+export async function generateStaticParams() {
+  const products = await api.list();
+  return products.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
+
+export const dynamicParams = false;
+
+export default async function page({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
   const producto = await api.fetch(Number(id));
   const imagenes = producto.images.split("+");
   return (
@@ -29,4 +54,3 @@ async function page({ params: { id } }: { params: { id: string } }) {
     </div>
   );
 }
-export default page;
