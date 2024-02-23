@@ -9,6 +9,7 @@ import { Raleway } from "next/font/google";
 const raleway = Raleway({ subsets: ["latin"], weight: ["500"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Cruel Summer",
   description:
     "Descubre la última moda en nuestra tienda de ropa femenina. Ofrecemos una amplia gama de faldas, tops, pantalones y remerones de alta calidad y estilo. ¡Viste con confianza y estilo con nuestras prendas únicas!",

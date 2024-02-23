@@ -62,6 +62,7 @@ const items: { href: string; title: string; id: number }[] = [
 
 export default function Navbar() {
   const user = null;
+  const favorites = null;
 
   return (
     <div className="sticky inset-x-0 top-0 z-50 bg-white py-2">
@@ -166,6 +167,31 @@ export default function Navbar() {
                     </svg>
                   </NavigationMenuLink>
                 </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <button className="h-10 max-w-max rounded-md  p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
+                  <div className="absolute ml-[10px] mt-[3px]">
+                    <p className="text-xs text-white">
+                      <small>{favorites}</small>
+                    </p>
+                  </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-heart"
+                    width={25}
+                    height={25}
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    fill={favorites !== null ? "1" : "none"}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                  </svg>
+                </button>
               </NavigationMenuItem>
 
               {/* CART */}

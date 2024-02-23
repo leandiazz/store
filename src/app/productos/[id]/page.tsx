@@ -1,13 +1,15 @@
 import api from "@/api";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
-import { Ghost } from "lucide-react";
 
 async function page({ params: { id } }: { params: { id: string } }) {
   const producto = await api.fetch(Number(id));
   const imagenes = producto.images.split("+");
   return (
-    <div key={producto.id} className="flex flex-col px-20 pt-10 md:flex-row">
+    <div
+      key={producto.id}
+      className="flex flex-col px-10 pt-10 md:flex-row md:px-20"
+    >
       <picture className="flex flex-col justify-center md:pr-[7%]">
         <img
           src={imagenes[0]}
