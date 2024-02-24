@@ -1,21 +1,18 @@
 import api from "@/api";
 import { redirect } from "next/navigation";
-
 import ProductCard from "../components/ProductCard";
-
 
 export default async function page({
   searchParams,
 }: {
   searchParams: { q: string };
 }) {
+  const products = await api.search(searchParams.q || "");
 
   async function searchActions(formData: FormData) {
     "use server";
     redirect(`/productos/?q=${formData.get("q")}`);
   }
-
-  const products = await api.search(searchParams.q || "");
 
   return (
     <div className="p-8">
