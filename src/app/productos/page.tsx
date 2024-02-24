@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import ProductCard from "../components/ProductCard";
 
-export async function searchActions(formData: FormData) {
+async function searchActions(formData: FormData) {
   "use server";
   redirect(`/productos/?q=${formData.get("q")}`);
 }
