@@ -40,7 +40,7 @@ export default async function page({
           src={imagenes[0]}
           alt={producto.name}
           className="w-full md:w-[500px]"
-        />
+        ></img>
       </picture>
       <div className="pt-10 md:pt-20 lg:w-[20%]">
         <h1 className="text-2xl">{producto.name}</h1>

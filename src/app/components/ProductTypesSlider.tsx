@@ -54,18 +54,18 @@ const ProductTypesSlider = () => {
             {targets.map((target) => (
               <CarouselItem key={target.id} className="lg:basis-1/3">
                 <figure className="relative box-border">
-                  <Link href={``}>
-                    <div className="h-[280px] w-full overflow-hidden rounded-md">
+                  <div className="h-[280px] w-full overflow-hidden rounded-md">
+                    <Link href={``}>
                       <img
                         alt={target.title}
                         className="h-full w-full object-cover"
                         src={target.src}
-                      />
-                    </div>
-                    <figcaption className="leading-1 absolute bottom-3 left-3 right-3 overflow-ellipsis text-3xl text-white">
-                      {target.title}
-                    </figcaption>
-                  </Link>
+                      ></img>
+                    </Link>
+                  </div>
+                  <figcaption className="leading-1 absolute bottom-3 left-3 right-3 overflow-ellipsis text-3xl text-white">
+                    <Link href={``}>{target.title}</Link>
+                  </figcaption>
                 </figure>
               </CarouselItem>
             ))}

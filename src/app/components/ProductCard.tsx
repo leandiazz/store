@@ -19,7 +19,7 @@ export default function ProductCard({ producto }: { producto: Product }) {
               src={imagenes[0]}
               alt={producto.name}
               className="m-auto h-auto w-full"
-            />
+            ></img>
           </Link>
         </picture>
         <div className="relative mt-2 text-center">

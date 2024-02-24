@@ -170,11 +170,9 @@ export default function Navbar() {
 
               <NavigationMenuItem>
                 <button className="h-10 max-w-max rounded-md  p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
-                  <div className="absolute ml-[10px] mt-[3px]">
-                    <p className="text-xs text-white">
-                      <small>{favorites}</small>
-                    </p>
-                  </div>
+                  <p className="absolute ml-[10px] mt-[3px] text-xs">
+                    <small className="text-white">{favorites}</small>
+                  </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-heart"
