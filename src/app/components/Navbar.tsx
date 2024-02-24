@@ -35,27 +35,27 @@ const items: { href: string; title: string; id: number }[] = [
     id: 1,
   },
   {
-    href: "/productos",
+    href: "/productos?q=vestidos",
     id: 2,
     title: "Vestidos",
   },
   {
-    href: "/productos",
+    href: "/productos?q=faldas",
     id: 3,
     title: "Faldas",
   },
   {
-    href: "/productos",
+    href: "/productos?q=tops",
     id: 4,
     title: "Tops",
   },
   {
-    href: "/productos",
+    href: "/productos?q=pantalones",
     id: 5,
     title: "Pantalones",
   },
   {
-    href: "/productos",
+    href: "/productos?q=remerones",
     id: 6,
     title: "Remerones",
   },

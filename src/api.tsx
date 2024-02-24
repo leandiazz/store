@@ -1,13 +1,4 @@
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  discount: number;
-  type: string;
-  color: string;
-  images: string;
-}
+import { Product } from "./types";
 
 const api = {
   list: async (): Promise<Product[]> => {
@@ -61,6 +52,16 @@ const api = {
     }
 
     return product;
+  },
+  search: async (query: string): Promise<Product[]> => {
+    if (query === "") return api.list();
+    return api
+      .list()
+      .then((products) =>
+        products.filter((product) =>
+          product.name.toLowerCase().includes(query.toLowerCase()),
+        ),
+      );
   },
 };
 
