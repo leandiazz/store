@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request) {
   const data = await request.json();
@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   if (data.key !== "secret") return NextResponse.json({ success: false });
 
   if (data.key === "secret") {
-    revalidateTag("productos");
+    revalidatePath("/productos", "layout");
     return NextResponse.json({ success: true, data });
   }
 }
@@ -15,8 +15,8 @@ export async function POST(request: Request) {
 // fetch("http://localhost:3000/api/revalidate", {
 //   method: "POST",
 //   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ key: "secret" })
+//   body: JSON.stringify({ key: "secret" }),
 // })
-//   .then(response => response.json())
-//   .then(data => console.log(data))
-//   .catch(error => console.error("Error:", error));
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error("Error:", error));
