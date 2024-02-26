@@ -2,9 +2,7 @@ import { Product } from "./types";
 
 const api = {
   list: async (): Promise<Product[]> => {
-    const [, ...data] = await fetch(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOBI-iIMsOrSJM7Q5MjyOxoOYk5h005feJpojroduwQWtmrjVOhXKHNa1smtDO_AEx4lLrsS70uI9W/pub?output=csv",
-    )
+    const [, ...data] = await fetch(process.env.API_KEY)
       .then((res) => res.text())
       .then((text) => text.split("\n"));
     const products: Product[] = data.map((row) => {
@@ -24,10 +22,9 @@ const api = {
     return products;
   },
   fetch: async (id: Product["id"]): Promise<Product> => {
-    const [, ...data] = await fetch(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOBI-iIMsOrSJM7Q5MjyOxoOYk5h005feJpojroduwQWtmrjVOhXKHNa1smtDO_AEx4lLrsS70uI9W/pub?output=csv",
-      { next: { tags: ["producto"] } },
-    )
+    const [, ...data] = await fetch(process.env.API_KEY, {
+      next: { tags: ["producto"] },
+    })
       .then((res) => res.text())
       .then((text) => text.split("\n"));
     const products: Product[] = data.map((row) => {
