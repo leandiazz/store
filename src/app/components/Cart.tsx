@@ -18,7 +18,10 @@ export function Cart() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
+        <button
+          aria-label="carrito de compras"
+          className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none"
+        >
           <svg
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +74,11 @@ export function Cart() {
             </div>
             <SheetFooter className="pt-5">
               <SheetTrigger asChild>
-                <Link href="/#" className="w-full text-center">
+                <Link
+                  href="/#"
+                  className="w-full text-center"
+                  aria-label="continuar con la compra"
+                >
                   Continuar
                 </Link>
               </SheetTrigger>

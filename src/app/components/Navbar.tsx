@@ -97,7 +97,11 @@ export default function Navbar() {
                 <SheetHeader>
                   <ul className="mt-20 flex flex-col gap-4 text-3xl">
                     {items.map((item) => (
-                      <Link key={item.id} href={item.href}>
+                      <Link
+                        key={item.id}
+                        href={item.href}
+                        aria-label={`seccion ${item.title}`}
+                      >
                         <SheetClose>{item.title}</SheetClose>
                       </Link>
                     ))}
@@ -108,7 +112,7 @@ export default function Navbar() {
           </div>
 
           {/*  LOGO  */}
-          <Link href="/">
+          <Link href="/" aria-label="inicio de web">
             <p className="mt-1 text-2xl">Cruel Summer</p>
           </Link>
 
@@ -129,6 +133,7 @@ export default function Navbar() {
                         key={item.id}
                         legacyBehavior
                         passHref
+                        aria-label={`seccion ${item.title}`}
                       >
                         <NavigationMenuLink
                           className={cn(
@@ -146,7 +151,12 @@ export default function Navbar() {
 
               {/*  USER */}
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
+                <Link
+                  href="/"
+                  legacyBehavior
+                  passHref
+                  aria-label="autenticacion de usuario"
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +179,10 @@ export default function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <button className="h-10 max-w-max rounded-md  p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
+                <button
+                  aria-label="productos favoritos"
+                  className="h-10 max-w-max rounded-md  p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none"
+                >
                   <p className="absolute ml-[10px] mt-[3px] text-xs">
                     <small className="text-white">{favorites}</small>
                   </p>
@@ -205,29 +218,3 @@ export default function Navbar() {
     </div>
   );
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-sm p-3 leading-none no-underline outline-none transition-colors hover:bg-purple-200",
-            className,
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
