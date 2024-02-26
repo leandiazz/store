@@ -15,7 +15,7 @@ export default async function page({
   }
 
   return (
-    <div className="p-8">
+    <div className="relative p-8">
       <form action={searchActions} className="ml-10">
         <input
           defaultValue={searchParams.q || ""}
@@ -30,7 +30,11 @@ export default async function page({
         {products.map((producto) => {
           return <ProductCard producto={producto} key={producto.id} />;
         })}
-        {products.length === 0 ? <h1>No hay capo</h1> : null}
+        {products.length === 0 ? (
+          <div className="mt-[30%]">
+            <p className="text-center">producto no encontrado :(</p>
+          </div>
+        ) : null}
       </ol>
     </div>
   );

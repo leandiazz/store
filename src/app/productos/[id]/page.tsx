@@ -54,3 +54,4 @@ export default async function page({
     </div>
   );
 }
+// Todo: Change img tag to Image from next/image

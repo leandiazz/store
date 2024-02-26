@@ -8,38 +8,49 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import Link from "next/link";
 
 const targets = [
   {
+    heigth: 1800,
+    href: "tops",
     id: 1,
-    title: "Tops",
-    href: "/productos?q=tops",
     src: "/tops.jpg",
+    title: "Tops",
+    width: 1440,
   },
   {
+    heigth: 1800,
+    href: "faldas",
     id: 2,
-    href: "/productos?q=faldas",
-    title: "Faldas",
     src: "/faldas.jpg",
+    title: "Faldas",
+    width: 1440,
   },
   {
+    heigth: 1800,
+    href: "pantalones",
     id: 3,
-    title: "Pantalones",
-    href: "/productos?q=pantalones",
     src: "/pantalones.jpg",
+    title: "Pantalones",
+    width: 1440,
   },
   {
+    heigth: 1800,
+    href: "remerones",
     id: 4,
-    title: "Remerones",
-    href: "/productos?q=remerones",
     src: "/remerones.jpg",
+    title: "Remerones",
+    width: 1440,
   },
   {
+    heigth: 1800,
+    href: "vestidos",
     id: 5,
-    title: "Vestidos",
-    href: "/productos?q=vestidos",
     src: "/vestidos.jpg",
+    title: "Vestidos",
+    width: 1440,
   },
 ];
 
@@ -60,16 +71,30 @@ const ProductTypesSlider = () => {
               <CarouselItem key={target.id} className="lg:basis-1/3">
                 <figure className="relative box-border">
                   <div className="h-[280px] w-full overflow-hidden rounded-md">
-                    <Link href={target.href}>
-                      <img
+                    <Link
+                      href={{
+                        pathname: "/productos",
+                        query: { q: `${target.title}` },
+                      }}
+                    >
+                      <Image
                         alt={target.title}
                         className="h-full w-full object-cover"
+                        width={target.width}
+                        height={target.heigth}
                         src={target.src}
-                      ></img>
+                      ></Image>
                     </Link>
                   </div>
                   <figcaption className="leading-1 absolute bottom-3 left-3 right-3 overflow-ellipsis text-3xl text-white">
-                    <Link href={target.href}>{target.title}</Link>
+                    <Link
+                      href={{
+                        pathname: "/productos",
+                        query: { q: `${target.title}` },
+                      }}
+                    >
+                      {target.title}
+                    </Link>
                   </figcaption>
                 </figure>
               </CarouselItem>

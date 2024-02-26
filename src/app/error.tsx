@@ -1,6 +1,22 @@
 "use client";
 
-async function error() {
-  return <p>ocurrio un error, intentalo de nuevo</p>;
+import { useEffect } from "react";
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    <div>
+      <h2>ocurrio un error, intentalo de nuevo</h2>
+      <button onClick={() => reset()}>Reintentar</button>
+    </div>
+  );
 }
-export default error;

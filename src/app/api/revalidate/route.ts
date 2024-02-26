@@ -16,6 +16,6 @@ export async function POST(request: Request) {
 //   method: "POST",
 //   body: JSON.stringify({ key: "secret" }),
 // })
-//   .then((res) => res.json())
-//   .then((data) => console.log(data))
-//   .catch((error) => console.error(error));
+//   .then(res => res.json())
+//   .then(data => console.log(data))
+//   .catch(error => console.error(error));

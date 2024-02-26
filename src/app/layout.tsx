@@ -46,7 +46,7 @@ export default function RootLayout({
         )}
       >
         <Navbar />
-        <main className="relative flex min-h-screen flex-col">
+        <main className="relative flex min-h-full flex-col">
           <div className="flex-1 flex-grow">{children}</div>
         </main>
         <Footer />

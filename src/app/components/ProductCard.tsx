@@ -4,9 +4,9 @@ import { formatPrice } from "@/lib/utils";
 import { Product } from "@/types";
 import Link from "next/link";
 import { DynamicFavoriteButton } from "./FavoriteButton";
+import Image from "next/image";
 
 export default function ProductCard({ producto }: { producto: Product }) {
-  const imagenes = producto.images.split("+");
   return (
     <li
       key={producto.id}
@@ -15,11 +15,13 @@ export default function ProductCard({ producto }: { producto: Product }) {
       <div className="flex flex-col">
         <picture>
           <Link href={`/productos/${producto.id.toString()}`}>
-            <img
-              src={imagenes[0]}
+            <Image
+              src={producto.images}
+              width={760}
+              height={950}
               alt={producto.name}
               className="m-auto h-auto w-full"
-            ></img>
+            />
           </Link>
         </picture>
         <div className="relative mt-2 text-center">
@@ -35,3 +37,4 @@ export default function ProductCard({ producto }: { producto: Product }) {
     </li>
   );
 }
+// Todo: Change img tag to Image from next/image
