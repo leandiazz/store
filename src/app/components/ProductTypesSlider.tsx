@@ -14,26 +14,31 @@ const targets = [
   {
     id: 1,
     title: "Tops",
+    href: "/productos?q=tops",
     src: "/tops.jpg",
   },
   {
     id: 2,
+    href: "/productos?q=faldas",
     title: "Faldas",
     src: "/faldas.jpg",
   },
   {
     id: 3,
     title: "Pantalones",
+    href: "/productos?q=pantalones",
     src: "/pantalones.jpg",
   },
   {
     id: 4,
     title: "Remerones",
+    href: "/productos?q=remerones",
     src: "/remerones.jpg",
   },
   {
     id: 5,
     title: "Vestidos",
+    href: "/productos?q=vestidos",
     src: "/vestidos.jpg",
   },
 ];
@@ -55,7 +60,7 @@ const ProductTypesSlider = () => {
               <CarouselItem key={target.id} className="lg:basis-1/3">
                 <figure className="relative box-border">
                   <div className="h-[280px] w-full overflow-hidden rounded-md">
-                    <Link href={``}>
+                    <Link href={target.href}>
                       <img
                         alt={target.title}
                         className="h-full w-full object-cover"
@@ -64,7 +69,7 @@ const ProductTypesSlider = () => {
                     </Link>
                   </div>
                   <figcaption className="leading-1 absolute bottom-3 left-3 right-3 overflow-ellipsis text-3xl text-white">
-                    <Link href={``}>{target.title}</Link>
+                    <Link href={target.href}>{target.title}</Link>
                   </figcaption>
                 </figure>
               </CarouselItem>
