@@ -1,6 +1,7 @@
 import api from "@/api";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
+import Image from "next/image";
 
 export async function generateMetadata({
   params: { id },
@@ -29,18 +30,19 @@ export default async function page({
   params: { id: string };
 }) {
   const producto = await api.fetch(Number(id));
-  const imagenes = producto.images.split("+");
   return (
     <div
       key={producto.id}
       className="flex flex-col px-10 pt-10 md:flex-row md:px-20"
     >
       <picture className="flex flex-col justify-center md:pr-[7%]">
-        <img
-          src={imagenes[0]}
+        <Image
+          src={producto.images}
           alt={producto.name}
+          width={1440}
+          height={1800}
           className="w-full md:w-[500px]"
-        ></img>
+        />
       </picture>
       <div className="pt-10 md:pt-20 lg:w-[20%]">
         <h1 className="text-2xl">{producto.name}</h1>
