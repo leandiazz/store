@@ -17,8 +17,8 @@ export default function ProductCard({ producto }: { producto: Product }) {
           <Link href={`/productos/${producto.id.toString()}`}>
             <Image
               src={producto.images}
-              width={760}
-              height={950}
+              width={1440}
+              height={1800}
               alt={producto.name}
               className="m-auto h-auto w-full"
             />
