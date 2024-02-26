@@ -2,7 +2,7 @@ import { Product } from "./types";
 
 const api = {
   list: async (): Promise<Product[]> => {
-    const [, ...data] = await fetch(process.env.API_KEY)
+    const [, ...data] = await fetch(process.env.API_KEY!)
       .then((res) => res.text())
       .then((text) => text.split("\n"));
     const products: Product[] = data.map((row) => {
@@ -22,7 +22,7 @@ const api = {
     return products;
   },
   fetch: async (id: Product["id"]): Promise<Product> => {
-    const [, ...data] = await fetch(process.env.API_KEY, {
+    const [, ...data] = await fetch(process.env.API_KEY!, {
       next: { tags: ["producto"] },
     })
       .then((res) => res.text())
