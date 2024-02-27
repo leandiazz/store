@@ -3,14 +3,15 @@ import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function POST(request: Request) {
   const data = await request.json();
+  const [date] = new Date().toISOString().split("T");
 
   if (data.key !== "secret") return NextResponse.json({ success: false });
 
-  if (data.key === "secret") {
-    revalidatePath("/productos");
-    revalidateTag("producto");
-    return NextResponse.json({ success: true, data });
-  }
+  revalidatePath("/productos");
+  revalidateTag("producto");
+  return NextResponse.json({
+    message: `successfully revalidated on ${date} :)`,
+  });
 }
 // fetch("https://cruelsummer.vercel.app/api/revalidate", {
 //   method: "POST",
