@@ -13,20 +13,21 @@ const number = [
 function loading() {
   return (
     <div className="p-8">
-      <Skeleton className="ml-10 h-[28px] w-[212px] rounded-none border-2 px-2" />
-      <ul className="m-0 grid list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {number.map((item) => (
+      <Skeleton className="ml-10 h-[26px] w-[210px] rounded" />
+
+      <ul className="m-0 grid h-screen list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {number.map((i) => (
           <li
-            key={item.id}
-            className="m-5 box-border flex shrink-0 grow-0 basis-full p-5 "
+            key={i.id}
+            className="m-5 box-border flex shrink-0 grow-0 basis-full"
           >
-            <div className="flex flex-col">
-              <div className="m-auto h-auto w-full">
-                <Skeleton className="h-[475px] w-[380px]" />
+            <div className="flex h-full w-full flex-col p-5">
+              <div className="h-full w-full">
+                <Skeleton className="h-full  w-auto rounded" />
               </div>
-              <div className="mt-2 flex flex-col items-center">
-                <Skeleton className="my-[2px] h-[24px] w-[100px]" />
-                <Skeleton className="my-[3px] h-[22px] w-[40px]" />
+              <div className=" h-auto w-full ">
+                <Skeleton className="m-auto mt-1 h-[22px] w-auto" />
+                <Skeleton className="m-auto mt-1 h-[22px] w-auto" />
               </div>
             </div>
           </li>

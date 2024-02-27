@@ -1,6 +1,9 @@
 import api from "@/api";
 import { redirect } from "next/navigation";
 import ProductCard from "../components/ProductCard";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const number = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
 export default async function page({
   searchParams,
