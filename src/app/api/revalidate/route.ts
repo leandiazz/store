@@ -5,7 +5,8 @@ export async function POST(request: Request) {
   const data = await request.json();
   const [date] = new Date().toISOString().split("T");
 
-  if (data.key !== "secret") return NextResponse.json({ success: false });
+  if (data.key !== process.env.SECRET)
+    return NextResponse.json({ success: false, message: "bad request" });
 
   revalidatePath("/productos");
   revalidateTag("producto");
