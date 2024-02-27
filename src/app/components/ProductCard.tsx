@@ -37,4 +37,3 @@ export default function ProductCard({ producto }: { producto: Product }) {
     </li>
   );
 }
-// Todo: Change img tag to Image from next/image
