@@ -1,12 +1,17 @@
 "use client";
 
-import { formatPrice } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import { Product } from "@/types";
 import Link from "next/link";
 import { DynamicFavoriteButton } from "./FavoriteButton";
 import Image from "next/image";
+import { Prompt } from "next/font/google";
+
+const prompt = Prompt({ subsets: ["latin"], weight: ["400"] });
 
 export default function ProductCard({ producto }: { producto: Product }) {
+  const discountPrice =
+    producto.price - (producto.price / 100) * producto.discount;
   return (
     <li
       key={producto.id}
@@ -30,7 +35,10 @@ export default function ProductCard({ producto }: { producto: Product }) {
               {producto.name}
             </Link>
           </p>
-          <strong>{formatPrice(producto.price)}</strong>
+          <p className={cn(prompt.className, "font-sans antialiased")}>
+            <strong className="text-lg ">{`${formatPrice(discountPrice)} `}</strong>
+            <span className="line-through">{`${formatPrice(producto.price)}`}</span>
+          </p>
           <DynamicFavoriteButton producto={producto} />
         </div>
       </div>

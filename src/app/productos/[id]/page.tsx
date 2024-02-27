@@ -1,6 +1,7 @@
 import api from "@/api";
-import { Button } from "@/components/ui/button";
-import { formatPrice } from "@/lib/utils";
+import { SelectForm } from "@/app/components/SelectForm";
+import { cn, formatPrice } from "@/lib/utils";
+import { Prompt } from "next/font/google";
 import Image from "next/image";
 
 export async function generateMetadata({
@@ -24,36 +25,48 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
+const prompt = Prompt({ subsets: ["latin"], weight: ["400"] });
+
 export default async function page({
   params: { id },
 }: {
   params: { id: string };
 }) {
   const producto = await api.fetch(Number(id));
+  const discountPrice =
+    producto.price - (producto.price / 100) * producto.discount;
   return (
-    <div
-      key={producto.id}
-      className="flex flex-col px-10 pt-10 md:flex-row md:px-20"
-    >
-      <picture className="flex flex-col justify-center md:pr-[7%]">
-        <Image
-          src={producto.images}
-          alt={producto.name}
-          width={1440}
-          height={1800}
-          className="w-full md:w-[500px]"
-        />
-      </picture>
-      <div className="pt-10 md:pt-20 lg:w-[20%]">
-        <h1 className="text-2xl">{producto.name}</h1>
-        <p>{formatPrice(producto.price)}</p>
-        <div className="flex items-center justify-center py-12 md:pt-20 lg:w-full">
-          <Button size={"lg"} variant={"outline"} className="lg:w-full">
-            <span>Añadir al carrito</span>
-          </Button>
+    <div className="flex w-screen flex-col items-center">
+      <div
+        key={producto.id}
+        className="flex w-[90%] flex-col  px-10 pt-10 md:flex-row md:pl-20 md:pt-20"
+      >
+        <picture className="flex flex-col items-center justify-center md:pr-[7%]">
+          <Image
+            src={producto.images}
+            alt={producto.name}
+            width={1440}
+            height={1800}
+            className="w-full md:w-[500px]"
+          />
+        </picture>
+        <div className="flex flex-col items-start  pt-10 md:w-[30%] md:pt-20">
+          <h1 className="w-max text-4xl">{producto.name}</h1>
+          <h2
+            className={cn(
+              prompt.className,
+              "mt-3 w-full font-sans antialiased",
+            )}
+          >
+            <strong className="mr-2  text-xl">{`${formatPrice(discountPrice)}`}</strong>
+            <span className="mx-1 text-sm text-gray-500 line-through">{`${formatPrice(producto.price)}`}</span>
+            <span className="ml-1 rounded-sm border-2 px-[2px] text-xs">
+              {producto.discount}% OFF
+            </span>
+          </h2>
+          <SelectForm producto={producto} />
         </div>
       </div>
     </div>
   );
 }
-// Todo: Change img tag to Image from next/image

@@ -5,8 +5,9 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { cn } from "@/lib/utils";
 import { Raleway } from "next/font/google";
+import { Toaster } from "@/components/ui/toaster";
 
-const raleway = Raleway({ subsets: ["latin"], weight: ["500"] });
+const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -50,6 +51,7 @@ export default function RootLayout({
           <div className="flex-1 flex-grow">{children}</div>
         </main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
