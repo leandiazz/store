@@ -39,7 +39,7 @@ export default function ProductCard({ producto }: { producto: Product }) {
             <strong className="text-lg ">{`${formatPrice(discountPrice)} `}</strong>
             <s>{`${formatPrice(producto.price)}`}</s>
           </p>
-          <DynamicFavoriteButton producto={producto} />
+          <DynamicFavoriteButton id={producto.id} />
         </div>
       </div>
     </li>

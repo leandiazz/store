@@ -1,15 +1,28 @@
-import { Product } from "@/types";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 
-export default function FavoriteButton({ producto }: { producto: Product }) {
-  const isFavourite = window.localStorage
-    .getItem("favorites")
-    ?.includes(producto.id.toString());
+export default function FavoriteButton({ id }: { id: number }) {
+  const favoritesList = JSON.parse(localStorage.getItem("favorites") || "[]");
+  const [fav, setFav] = useState(favoritesList.includes(id));
+
+  const handleClick = () => {
+    if (!fav) {
+      setFav(true);
+      localStorage.setItem("favorites", JSON.stringify([...favoritesList, id]));
+    } else {
+      setFav(false);
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify(favoritesList.filter((idd: number) => idd !== id)),
+      );
+    }
+  };
 
   return (
     <button
       type="button"
-      className={`absolute right-2 top-0 fill-none text-red-500 ${isFavourite ? "opacity-100 hover:fill-none" : "opacity-20 hover:fill-red-500"}`}
+      onClick={handleClick}
+      className={`absolute right-2 top-0 fill-none text-red-600 opacity-20 active:animate-ping ${fav ? "fill-red-600 active:fill-none" : "fill-none active:fill-red-600"}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -32,4 +45,3 @@ export default function FavoriteButton({ producto }: { producto: Product }) {
 export const DynamicFavoriteButton = dynamic(async () => FavoriteButton, {
   ssr: false,
 });
-//♥

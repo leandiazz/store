@@ -50,7 +50,7 @@ export default async function page({
             className="w-full md:w-[500px]"
           />
         </picture>
-        <div className="flex flex-col items-start  pt-10 md:w-[30%] md:pt-20">
+        <div className="flex flex-col items-start pt-10 md:w-[30%] md:pt-20">
           <h1 className="w-max text-4xl">{producto.name}</h1>
           <h2
             className={cn(
