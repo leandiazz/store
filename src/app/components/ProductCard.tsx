@@ -37,7 +37,7 @@ export default function ProductCard({ producto }: { producto: Product }) {
           </p>
           <p className={cn(prompt.className, "font-sans antialiased")}>
             <strong className="text-lg ">{`${formatPrice(discountPrice)} `}</strong>
-            <span className="line-through">{`${formatPrice(producto.price)}`}</span>
+            <s>{`${formatPrice(producto.price)}`}</s>
           </p>
           <DynamicFavoriteButton producto={producto} />
         </div>

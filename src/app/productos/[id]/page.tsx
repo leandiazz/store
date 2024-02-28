@@ -36,7 +36,7 @@ export default async function page({
   const discountPrice =
     producto.price - (producto.price / 100) * producto.discount;
   return (
-    <div className="flex w-screen flex-col items-center">
+    <div className="flex flex-col items-center">
       <div
         key={producto.id}
         className="flex w-[90%] flex-col  px-10 pt-10 md:flex-row md:pl-20 md:pt-20"
@@ -59,7 +59,7 @@ export default async function page({
             )}
           >
             <strong className="mr-2  text-xl">{`${formatPrice(discountPrice)}`}</strong>
-            <span className="mx-1 text-sm text-gray-500 line-through">{`${formatPrice(producto.price)}`}</span>
+            <s className="mx-1 text-sm text-gray-500">{`${formatPrice(producto.price)}`}</s>
             <span className="ml-1 rounded-sm border-2 px-[2px] text-xs">
               {producto.discount}% OFF
             </span>
