@@ -20,14 +20,11 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
 import { Cart } from "./Cart";
-
 const items: { href: string; title: string; id: number }[] = [
   {
     href: "/productos",
@@ -62,9 +59,6 @@ const items: { href: string; title: string; id: number }[] = [
 ];
 
 export default function Navbar() {
-  const user = null;
-  const favorites = null;
-
   return (
     <div className="sticky inset-x-0 top-0 z-50 bg-white py-2">
       <header className="relative">
@@ -183,9 +177,6 @@ export default function Navbar() {
                   aria-label="productos favoritos"
                   className="h-10 max-w-max rounded-md  p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none"
                 >
-                  <p className="absolute ml-[10px] mt-[3px] text-xs">
-                    <small className="text-white">{favorites}</small>
-                  </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-heart"
@@ -194,7 +185,7 @@ export default function Navbar() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    fill={favorites !== null ? "1" : "none"}
+                    fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
