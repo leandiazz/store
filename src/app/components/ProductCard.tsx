@@ -1,11 +1,11 @@
 "use client";
 
-import { cn, formatPrice } from "@/lib/utils";
-import { Product } from "@/types";
 import Link from "next/link";
-import { DynamicFavoriteButton } from "./FavoriteButton";
 import Image from "next/image";
 import { Prompt } from "next/font/google";
+import { Product } from "@/lib/types";
+import { DynamicFavoriteButton } from "./FavoriteButton";
+import { cn, formatPrice } from "@/lib/utils";
 
 const prompt = Prompt({ subsets: ["latin"], weight: ["400"] });
 

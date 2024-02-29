@@ -1,6 +1,5 @@
-import dynamic from "next/dynamic";
-
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
 export default function FavoriteButton({ id }: { id: number }) {
   const favoritesList = JSON.parse(localStorage.getItem("favorites") || "[]");

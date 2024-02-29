@@ -1,27 +1,28 @@
 "use client";
 
+import {
+  FormMessage,
+  FormLabel,
+  FormItem,
+  FormField,
+  FormDescription,
+  FormControl,
+  Form,
+} from "@/components/ui/form";
+import {
+  SelectValue,
+  SelectTrigger,
+  SelectItem,
+  SelectContent,
+  Select,
+} from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Product } from "@/lib/types";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Product } from "@/types";
+import { useCart } from "@/hooks/useCart";
 
 const FormSchema = z.object({
   color: z.string({
@@ -29,7 +30,10 @@ const FormSchema = z.object({
   }),
 });
 
+export type SelectedProductData = z.infer<typeof FormSchema>;
+
 export function SelectForm({ producto }: { producto: Product }) {
+  const { addProduct } = useCart();
   const coloresDisponibles = producto.color.split("-");
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -37,8 +41,9 @@ export function SelectForm({ producto }: { producto: Product }) {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
-      description: "producto agregado al carrito",
+      description: "Producto agregado al carrito",
     });
+    addProduct(producto, data);
   }
 
   return (

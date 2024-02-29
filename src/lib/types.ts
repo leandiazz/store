@@ -8,3 +8,8 @@ export interface Product {
   color: string;
   images: string;
 }
+export interface Params {
+  params: {
+    id: string;
+  };
+}

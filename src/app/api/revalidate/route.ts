@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { revalidatePath, revalidateTag } from "next/cache";
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const data = await request.json();
@@ -10,10 +10,12 @@ export async function POST(request: Request) {
 
   revalidatePath("/productos");
   revalidateTag("producto");
+
   return NextResponse.json({
     message: `successfully revalidated on ${date} :)`,
   });
 }
+
 // fetch("https://cruelsummer.vercel.app/api/revalidate", {
 //   method: "POST",
 //   body: JSON.stringify({ key: "secret" }),

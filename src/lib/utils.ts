@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import { Prompt, Raleway } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -23,3 +24,6 @@ export function formatPrice(
 
   return formattedPrice.replace(/\s/g, "");
 }
+
+export const promptFont = Prompt({ subsets: ["latin"], weight: ["400"] });
+export const ralewayFont = Raleway({ subsets: ["latin"], weight: ["400"] });

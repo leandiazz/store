@@ -1,37 +1,24 @@
 import api from "@/api";
 import { SelectForm } from "@/app/components/SelectForm";
-import { cn, formatPrice } from "@/lib/utils";
-import { Prompt } from "next/font/google";
+import { cn, formatPrice, promptFont } from "@/lib/utils";
+import { Params } from "@/lib/types";
 import Image from "next/image";
 
-export async function generateMetadata({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
+export const dynamicParams = false;
+export async function generateMetadata({ params: { id } }: Params) {
   const producto = await api.fetch(Number(id));
   return {
     title: `${producto.name} - Cruel Summer`,
     description: producto.description,
   };
 }
-
 export async function generateStaticParams() {
   const products = await api.list();
   return products.map((product) => ({
     id: product.id.toString(),
   }));
 }
-
-export const dynamicParams = false;
-
-const prompt = Prompt({ subsets: ["latin"], weight: ["400"] });
-
-export default async function page({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
+export default async function page({ params: { id } }: Params) {
   const producto = await api.fetch(Number(id));
   const discountPrice =
     producto.price - (producto.price / 100) * producto.discount;
@@ -54,7 +41,7 @@ export default async function page({
           <h1 className="w-max text-4xl">{producto.name}</h1>
           <h2
             className={cn(
-              prompt.className,
+              promptFont.className,
               "mt-3 w-full font-sans antialiased",
             )}
           >

@@ -3,11 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import { cn } from "@/lib/utils";
-import { Raleway } from "next/font/google";
-import { Toaster } from "@/components/ui/toaster";
+import { cn, ralewayFont } from "@/lib/utils";
 
-const raleway = Raleway({ subsets: ["latin"], weight: ["400"] });
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -43,7 +41,7 @@ export default function RootLayout({
       <body
         className={cn(
           "relative h-full font-sans antialiased",
-          raleway.className,
+          ralewayFont.className,
         )}
       >
         <Navbar />
