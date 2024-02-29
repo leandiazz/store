@@ -1,10 +1,16 @@
-function CartLogo() {
+import { cn } from "./utils";
+
+interface FavsLogoProps {
+  className?: string;
+}
+
+const CartLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
   return (
     <>
       <svg
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-shopping-cart"
+        className={cn("icon icon-tabler icon-tabler-shopping-cart", className)}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -13,6 +19,7 @@ function CartLogo() {
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        {...props}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -22,13 +29,13 @@ function CartLogo() {
       </svg>
     </>
   );
-}
-function FavsLogo() {
+};
+const FavsLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-heart"
+        className={cn("icon icon-tabler icon-tabler-trash", className)}
         width={25}
         height={25}
         viewBox="0 0 24 24"
@@ -37,19 +44,20 @@ function FavsLogo() {
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        {...props}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
       </svg>
     </>
   );
-}
-function MenuLogo() {
+};
+const MenuLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-menu-2"
+        className={cn("icon icon-tabler icon-tabler-menu-2", className)}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -58,6 +66,7 @@ function MenuLogo() {
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        {...props}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M4 6l16 0" />
@@ -66,13 +75,13 @@ function MenuLogo() {
       </svg>
     </>
   );
-}
-function UserLogo() {
+};
+const UserLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-user"
+        className={cn("icon icon-tabler icon-tabler-user", className)}
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -81,6 +90,7 @@ function UserLogo() {
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        {...props}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -88,13 +98,13 @@ function UserLogo() {
       </svg>
     </>
   );
-}
-function TrashLogo() {
+};
+const TrashLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-trash"
+        className={cn("icon icon-tabler icon-tabler-trash", className)}
         width={24}
         height={24}
         viewBox="0 0 24 24"
@@ -103,6 +113,7 @@ function TrashLogo() {
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        {...props}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M4 7l16 0" />
@@ -113,5 +124,28 @@ function TrashLogo() {
       </svg>
     </>
   );
-}
-export { CartLogo, FavsLogo, MenuLogo, UserLogo, TrashLogo };
+};
+const CardFavLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn("icon icon-tabler icon-tabler-heart", className)}
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="currentColor"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        {...props}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+      </svg>
+    </>
+  );
+};
+
+export { CartLogo, FavsLogo, MenuLogo, UserLogo, TrashLogo, CardFavLogo };

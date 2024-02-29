@@ -23,6 +23,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Cart } from "./Cart";
 import { FavsLogo, MenuLogo, UserLogo } from "@/lib/Logos";
+import { Button } from "@/components/ui/button";
 
 const items: { href: string; title: string; id: number }[] = [
   {
@@ -75,13 +76,14 @@ export default function Navbar() {
                 <SheetHeader>
                   <ul className="mt-20 flex flex-col gap-4 text-3xl">
                     {items.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={item.href}
-                        aria-label={`seccion ${item.title}`}
-                      >
-                        <SheetClose>{item.title}</SheetClose>
-                      </Link>
+                      <Button asChild key={item.id} variant={"ghost"}>
+                        <Link
+                          href={item.href}
+                          aria-label={`seccion ${item.title}`}
+                        >
+                          <SheetClose>{item.title}</SheetClose>
+                        </Link>
+                      </Button>
                     ))}
                   </ul>
                 </SheetHeader>
@@ -94,7 +96,17 @@ export default function Navbar() {
             <p className="mt-1 text-2xl">Cruel Summer</p>
           </Link>
 
-          <div className="md:hidden">
+          <div className="flex md:hidden">
+            <button
+              aria-label="carrito de compras"
+              className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4
+        pt-1 hover:bg-accent focus-visible:outline-none"
+            >
+              <Link href="/favoritos" aria-label="productos favoritos">
+                {/* the svg below is customizable by classname */}
+                <FavsLogo />
+              </Link>
+            </button>
             <Cart />
           </div>
 
@@ -143,9 +155,9 @@ export default function Navbar() {
               </NavigationMenuItem> */}
 
               {/*  FAVORITES */}
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <Link
-                  href="/"
+                  href="/favoritos"
                   legacyBehavior
                   passHref
                   aria-label="productos favoritos"
@@ -154,7 +166,7 @@ export default function Navbar() {
                     <FavsLogo />
                   </NavigationMenuLink>
                 </Link>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
 
               {/* CART */}
               <NavigationMenuItem>

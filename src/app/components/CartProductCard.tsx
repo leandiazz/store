@@ -10,7 +10,7 @@ export default function CartProductCard({ cartItem }: { cartItem: CartItem }) {
     removeProduct(key);
   };
   return (
-    <article className="flex h-full w-full min-w-[250px] flex-row">
+    <article className="flex h-full flex-row">
       {/* FOTO */}
       <Link href={`/productos/${product.id}`}>
         <div className="min-w-24 max-w-24">
