@@ -11,11 +11,7 @@ export type CartItem = {
 
 type CartState = {
   items: CartItem[];
-  addProduct: (
-    product: Product,
-    data: SelectedProductData,
-    productKey: number,
-  ) => void;
+  addProduct: (product: Product, data: SelectedProductData) => void;
   removeProduct: (key: number) => void;
   removeAllProducts: () => void;
 };
