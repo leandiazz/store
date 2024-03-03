@@ -60,7 +60,7 @@ const items: { href: string; title: string; id: number }[] = [
 
 export default function Navbar() {
   return (
-    <div className="sticky inset-x-0 top-0 z-10 bg-white py-2">
+    <div className="sticky w-full top-0 z-10 bg-white py-2">
       <div className="md:px-20">
         <header className="relative">
           <div className="flex justify-between ">
