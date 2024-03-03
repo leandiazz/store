@@ -21,10 +21,10 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export function Cart() {
-  const { items, removeProduct } = useCart();
+  const { items } = useCart();
 
   const totalPrice = items.reduce(function (valorAnterior, items) {
-    return valorAnterior + items.product.price;
+    return valorAnterior + items.price;
   }, 0);
 
   return (
@@ -38,23 +38,23 @@ export function Cart() {
           <CartLogo />
         </button>
       </SheetTrigger>
-      <SheetContent className="flex w-fit flex-col">
+      <SheetContent className="flex w-full flex-col">
         <SheetHeader>
           <SheetTitle className="text-start">mi pedido</SheetTitle>
         </SheetHeader>
         {items.length > 0 ? (
           <div className="min-h-full">
             <div className="pt-5">
-              <SheetDescription className="flex justify-between">
+              <div className="flex justify-between">
                 <div className="flex">
                   <span className="flex-1 pr-2">Subtotal:</span>
                   <strong>{formatPrice(totalPrice)}</strong>
                 </div>
                 <div>{`${items.length} ${items.length > 1 ? "productos" : "producto"}`}</div>
-              </SheetDescription>
+              </div>
               <Separator className="mt-3" />
             </div>
-            <ScrollArea className="h-[70%] bg-red-50  pr-5">
+            <ScrollArea className="h-[70%] pr-5">
               <div className="flex h-full flex-col justify-between ">
                 <ul className="mt-5 list-none ">
                   {items.map((cartItem) => (
@@ -80,12 +80,8 @@ export function Cart() {
               <SheetFooter className="mt-5 flex flex-col items-center">
                 <SheetClose asChild>
                   <Button asChild>
-                    <Link
-                      href="/carrito"
-                      className=""
-                      aria-label="continuar con la compra"
-                    >
-                      Iniciar Compra
+                    <Link href="/carrito" className="" aria-label="CHECKOUT">
+                      CHECKOUT
                     </Link>
                   </Button>
                 </SheetClose>

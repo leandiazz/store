@@ -60,125 +60,89 @@ const items: { href: string; title: string; id: number }[] = [
 
 export default function Navbar() {
   return (
-    <div className="sticky inset-x-0 top-0 z-50 bg-white py-2">
-      <header className="relative">
-        <div className="flex justify-between md:ml-8">
-          {/* MOBILE NAV */}
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
-                <MenuLogo />
-              </SheetTrigger>
-              <SheetContent
-                side={"left"}
-                className="flex h-full w-full flex-col "
-              >
-                <SheetHeader>
-                  <ul className="mt-20 flex flex-col gap-4 text-3xl">
-                    {items.map((item) => (
-                      <Button asChild key={item.id} variant={"ghost"}>
+    <div className="sticky inset-x-0 top-0 z-10 bg-white py-2">
+      <div className="md:px-20">
+        <header className="relative">
+          <div className="flex justify-between ">
+            {/* MOBILE NAV */}
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4 pt-1 hover:bg-accent focus-visible:outline-none">
+                  <MenuLogo />
+                </SheetTrigger>
+                <SheetContent
+                  side={"left"}
+                  className="flex h-full w-full flex-col "
+                >
+                  <SheetHeader>
+                    <ul className="mt-20 flex flex-col gap-4 text-3xl">
+                      {items.map((item) => (
+                        <Button asChild key={item.id} variant={"ghost"}>
+                          <Link
+                            href={item.href}
+                            aria-label={`seccion ${item.title}`}
+                          >
+                            <SheetClose>{item.title}</SheetClose>
+                          </Link>
+                        </Button>
+                      ))}
+                    </ul>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+            </div>
+
+            {/*  LOGO  */}
+            <Link href="/" aria-label="pagina de inicio">
+              <p className="mt-1 text-2xl">Cruel Summer</p>
+            </Link>
+
+            <div className="flex md:hidden">
+              <Cart />
+            </div>
+
+            {/* DESKTOP NAV */}
+            <NavigationMenu className="z-50 hidden md:block">
+              <NavigationMenuList>
+                {/* PRODUCTS */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Productos</NavigationMenuTrigger>
+                  <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
+                    {items.map((item) => {
+                      return (
                         <Link
                           href={item.href}
+                          key={item.id}
+                          legacyBehavior
+                          passHref
                           aria-label={`seccion ${item.title}`}
                         >
-                          <SheetClose>{item.title}</SheetClose>
+                          <NavigationMenuLink
+                            className={cn(
+                              navigationMenuTriggerStyle(),
+                              "mx-2 my-1 w-[170px] hover:bg-purple-200",
+                            )}
+                          >
+                            <h4>{item.title}</h4>
+                          </NavigationMenuLink>
                         </Link>
-                      </Button>
-                    ))}
-                  </ul>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
+                      );
+                    })}
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* CART */}
+                <NavigationMenuItem>
+                  <Cart />
+                </NavigationMenuItem>
+
+                <NavigationMenuIndicator />
+              </NavigationMenuList>
+              <NavigationMenuViewport />
+            </NavigationMenu>
           </div>
-
-          {/*  LOGO  */}
-          <Link href="/" aria-label="pagina de inicio">
-            <p className="mt-1 text-2xl">Cruel Summer</p>
-          </Link>
-
-          <div className="flex md:hidden">
-            <button
-              aria-label="carrito de compras"
-              className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4
-        pt-1 hover:bg-accent focus-visible:outline-none"
-            >
-              <Link href="/favoritos" aria-label="productos favoritos">
-                {/* the svg below is customizable by classname */}
-                <FavsLogo />
-              </Link>
-            </button>
-            <Cart />
-          </div>
-
-          {/* DESKTOP NAV */}
-          <NavigationMenu className="z-50 hidden md:block">
-            <NavigationMenuList>
-              {/* PRODUCTS */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Productos</NavigationMenuTrigger>
-                <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
-                  {items.map((item) => {
-                    return (
-                      <Link
-                        href={item.href}
-                        key={item.id}
-                        legacyBehavior
-                        passHref
-                        aria-label={`seccion ${item.title}`}
-                      >
-                        <NavigationMenuLink
-                          className={cn(
-                            navigationMenuTriggerStyle(),
-                            "mx-2 my-1 w-[170px] hover:bg-purple-200",
-                          )}
-                        >
-                          <h4>{item.title}</h4>
-                        </NavigationMenuLink>
-                      </Link>
-                    );
-                  })}
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/*  USER */}
-              {/* <NavigationMenuItem>
-                <Link
-                  href="/"
-                  legacyBehavior
-                  passHref
-                  aria-label="autenticacion de usuario"
-                >
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <UserLogo />
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem> */}
-
-              {/*  FAVORITES */}
-              {/* <NavigationMenuItem>
-                <Link
-                  href="/favoritos"
-                  legacyBehavior
-                  passHref
-                  aria-label="productos favoritos"
-                >
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <FavsLogo />
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem> */}
-
-              {/* CART */}
-              <NavigationMenuItem>
-                <Cart />
-              </NavigationMenuItem>
-
-              <NavigationMenuIndicator />
-            </NavigationMenuList>
-            <NavigationMenuViewport />
-          </NavigationMenu>
-        </div>
-      </header>
+        </header>
+      </div>
     </div>
   );
 }

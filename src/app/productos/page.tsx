@@ -1,6 +1,7 @@
 import api from "@/api";
 import ProductCard from "../components/ProductCard";
 import { redirect } from "next/navigation";
+import { Input } from "@/components/ui/input";
 
 export default async function page({
   searchParams,
@@ -16,10 +17,10 @@ export default async function page({
 
   return (
     <div className="relative p-8">
-      <form action={searchActions} className="ml-10">
-        <input
+      <form action={searchActions} className="ml-10 flex">
+        <Input
           defaultValue={searchParams.q || ""}
-          className="border-2 bg-slate-100 px-2"
+          className="w-[200px] border-2 bg-slate-100 px-2"
           name="q"
         />
         <button type="submit" className="ml-2">

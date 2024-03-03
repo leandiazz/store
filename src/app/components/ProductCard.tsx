@@ -30,11 +30,10 @@ export default function ProductCard({ producto }: { producto: Product }) {
           </Link>
         </picture>
         <div className="relative mt-2 text-center">
-          <p className="text-lg">
-            <Link href={`/productos/${producto.id.toString()}`}>
-              {producto.name}
-            </Link>
-          </p>
+          <Link href={`/productos/${producto.id.toString()}`}>
+            <p className="text-lg"> {producto.name}</p>
+          </Link>
+
           <p className={cn(prompt.className, "font-sans antialiased")}>
             <strong className="text-lg ">{`${formatPrice(discountPrice)} `}</strong>
             <s>{`${formatPrice(producto.price)}`}</s>

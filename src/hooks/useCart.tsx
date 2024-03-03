@@ -1,18 +1,23 @@
-import { SelectedProductData } from "@/app/components/SelectForm";
-import { Product } from "@/lib/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-export type CartItem = {
-  product: Product;
-  data: SelectedProductData;
+export interface NewCartItem {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  discount: number;
+  type: string;
+  color: string;
+  images: string;
+  quantity: string;
   key: number;
-};
+}
 
 type CartState = {
-  items: CartItem[];
-  addProduct: (product: Product, data: SelectedProductData) => void;
-  removeProduct: (key: number) => void;
+  items: NewCartItem[];
+  addProduct: (data: NewCartItem) => void;
+  removeProduct: ({ key }: { key: number }) => void;
   removeAllProducts: () => void;
 };
 
@@ -20,19 +25,16 @@ export const useCart = create<CartState>()(
   persist(
     (set) => ({
       items: [],
-      addProduct: (product, data) =>
+      addProduct: (data) =>
         set((state) => {
           return {
-            items: [
-              ...state.items,
-              { product, data, key: state.items.length + 1 },
-            ],
+            items: [...state.items, { ...data }],
           };
         }),
-      removeProduct: (productKey) =>
+      removeProduct: ({ key }) =>
         set((state) => {
           return {
-            items: state.items.filter((item) => item.key !== productKey),
+            items: state.items.filter((item) => item.key !== key),
           };
         }),
       removeAllProducts: () => set({ items: [] }),
