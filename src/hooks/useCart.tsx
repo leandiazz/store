@@ -11,13 +11,13 @@ export interface NewCartItem {
   color: string;
   images: string;
   quantity: string;
-  key: number;
+  key: string;
 }
 
 type CartState = {
   items: NewCartItem[];
   addProduct: (data: NewCartItem) => void;
-  removeProduct: ({ key }: { key: number }) => void;
+  removeProduct: (key: string) => void;
   removeAllProducts: () => void;
 };
 
@@ -31,7 +31,7 @@ export const useCart = create<CartState>()(
             items: [...state.items, { ...data }],
           };
         }),
-      removeProduct: ({ key }) =>
+      removeProduct: (key) =>
         set((state) => {
           return {
             items: state.items.filter((item) => item.key !== key),

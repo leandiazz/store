@@ -1,11 +1,10 @@
 "use client";
 
+import { v4 as uuidv4 } from "uuid";
 import {
   FormMessage,
-  FormLabel,
   FormItem,
   FormField,
-  FormDescription,
   FormControl,
   Form,
 } from "@/components/ui/form";
@@ -23,13 +22,14 @@ import { Product } from "@/lib/types";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
+import { Label } from "@/components/ui/label";
 
 const FormSchema = z.object({
   color: z.string({
-    required_error: "Elije un color de prenda.",
+    required_error: "Elije el color de prenda.",
   }),
   quantity: z.string({
-    required_error: "Elije una cantidad",
+    required_error: "Elije la cantidad",
   }),
 });
 
@@ -49,8 +49,9 @@ export function SelectForm({ producto }: { producto: Product }) {
     addProduct({
       ...producto,
       ...data,
-      key: Math.round(Math.random() * 3423),
+      key: uuidv4(),
     });
+    form.reset();
   }
   return (
     <Form {...form}>
@@ -60,7 +61,7 @@ export function SelectForm({ producto }: { producto: Product }) {
           name="color"
           render={({ field }) => (
             <FormItem className="mb-3 space-y-0">
-              <FormLabel>Color</FormLabel>
+              <Label>Color</Label>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -84,7 +85,7 @@ export function SelectForm({ producto }: { producto: Product }) {
           name="quantity"
           render={({ field }) => (
             <FormItem className="mb-5 space-y-0">
-              <FormLabel>Cantidad</FormLabel>
+              <Label>Cantidad</Label>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>

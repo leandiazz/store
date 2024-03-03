@@ -22,7 +22,7 @@ export default function CartProductCard({
   } = cartItem;
   const { removeProduct } = useCart();
   const handleDelete = () => {
-    removeProduct({ key });
+    removeProduct(key);
   };
   return (
     <article className="flex h-full flex-row">

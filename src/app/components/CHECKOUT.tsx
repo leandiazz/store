@@ -46,7 +46,7 @@ export default function CHECKOUT() {
                           cantidad: <strong>{cartItem.quantity}</strong>
                         </p>
                       </div>
-                      <button onClick={() => removeProduct({ key })}>
+                      <button onClick={() => removeProduct(key)}>
                         <TrashLogo />
                       </button>
                     </div>

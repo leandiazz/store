@@ -9,7 +9,7 @@ export default function page() {
         <div className="w-full min-w-fit lg:w-[50%]">
           <CHECKOUTFORM />
         </div>
-        <div className="mt-5 h-full w-full min-w-fit bg-green-200 lg:m-0 lg:w-[50%]">
+        <div className="mt-5 h-full w-full min-w-fit lg:m-0 lg:w-[50%]">
           <CHECKOUT />
         </div>
       </div>
