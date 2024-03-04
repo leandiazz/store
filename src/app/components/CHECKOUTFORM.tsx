@@ -4,15 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/hooks/useCart";
+import { useMemo } from "react";
 
 const formSchema = z.object({
   email: z
@@ -50,8 +47,32 @@ export default function CHECKOUTFORM() {
     },
   });
 
+  const { items } = useCart();
+  const router = useRouter();
+
+  const text = useMemo(
+    () =>
+      items
+        .reduce(
+          (message, product) =>
+            message.concat(
+              `• ${product.quantity} *${product.name}*\ncolor: ${product.color}\nprecio: $${(product.price - (product.price * product.discount) / 100) * Number(product.quantity)}\n\n`,
+            ),
+          "",
+        )
+        .concat(
+          `Total: $${items.reduce((total, product) => {
+            const productTotal =
+              Number(product.quantity) * (product.price - (product.price * product.discount) / 100);
+            return total + productTotal;
+          }, 0)}`,
+        )
+        .concat("\n\nMis datos: ..."),
+    [items],
+  );
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    router.push(`https://wa.me/5492313131313?text=${encodeURIComponent(text)}`);
   }
   return (
     <div className="w-full">
@@ -91,9 +112,7 @@ export default function CHECKOUTFORM() {
               name="email"
               render={({ field }) => (
                 <FormItem className="mr-5 w-[60%]">
-                  <Label className="whitespace-nowrap">
-                    Correo electrónico
-                  </Label>
+                  <Label className="whitespace-nowrap">Correo electrónico</Label>
                   <FormControl>
                     <Input placeholder="cruelsummer.ind@gmail.com" {...field} />
                   </FormControl>

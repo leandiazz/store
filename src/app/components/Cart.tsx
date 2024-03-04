@@ -21,9 +21,13 @@ import CartProductCard from "./CartProductCard";
 export default function Cart() {
   const { items } = useCart();
 
-  const totalPrice = items.reduce(function (valorAnterior, items) {
-    return valorAnterior + items.price;
+  const totalPrice = items.reduce((total, product) => {
+    const productTotal =
+      Number(product.quantity) * (product.price - (product.price * product.discount) / 100);
+    return total + productTotal;
   }, 0);
+
+  const totalProducts = items.reduce((total, product) => total + Number(product.quantity), 0);
 
   return (
     <Sheet>
@@ -56,7 +60,7 @@ export default function Cart() {
                     <span className="flex-1 pr-2">Subtotal:</span>
                     <strong>{formatPrice(totalPrice)}</strong>
                   </div>
-                  <div>{`${items.length} ${items.length > 1 ? "productos" : "producto"}`}</div>
+                  <div>{`${totalProducts} ${totalProducts > 1 ? "productos" : "producto"}`}</div>
                 </div>
               </div>
               <p className="px-3 text-center text-sm">

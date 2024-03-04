@@ -6,6 +6,7 @@ import Link from "next/link";
 export default function CartProductCard({ cartItem }: { cartItem: NewCartItem }) {
   const { color, description, discount, id, images, key, name, price, quantity, type } = cartItem;
   const { removeProduct } = useCart();
+  const cartItemPrice = (price - (price / 100) * discount) * Number(quantity);
   const handleDelete = () => {
     removeProduct(key);
   };
@@ -20,7 +21,7 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
         <Link href={`/productos/${id}`}>
           <div className="flex flex-col items-start">
             <h3>{name}</h3>
-            <p className={cn(promptFont.className, "text-sm")}>{formatPrice(price)}</p>
+            <p className={cn(promptFont.className, "text-sm")}>{formatPrice(cartItemPrice)}</p>
           </div>
         </Link>
         <div className="flex justify-between">
