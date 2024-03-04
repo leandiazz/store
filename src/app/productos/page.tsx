@@ -2,12 +2,9 @@ import api from "@/api";
 import ProductCard from "../components/ProductCard";
 import { redirect } from "next/navigation";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-export default async function page({
-  searchParams,
-}: {
-  searchParams: { q: string };
-}) {
+export default async function page({ searchParams }: { searchParams: { q: string } }) {
   const products = await api.search(searchParams.q || "");
 
   async function searchActions(formData: FormData) {
@@ -18,14 +15,10 @@ export default async function page({
   return (
     <div className="relative p-8">
       <form action={searchActions} className="ml-10 flex">
-        <Input
-          defaultValue={searchParams.q || ""}
-          className="w-[200px] border-2 bg-slate-100 px-2"
-          name="q"
-        />
-        <button type="submit" className="ml-2">
+        <Input defaultValue={searchParams.q || ""} className="w-[200px]" name="q" />
+        <Button type="submit" className="ml-2">
           Buscar
-        </button>
+        </Button>
       </form>
       <ol className="m-0 grid list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((producto) => {
@@ -33,7 +26,7 @@ export default async function page({
         })}
         {products.length === 0 ? (
           <div className="mt-[30%]">
-            <p className="text-center">producto no encontrado :(</p>
+            <p className="text-center">producto no encontrado</p>
           </div>
         ) : null}
       </ol>

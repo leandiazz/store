@@ -6,6 +6,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const promptFont = Prompt({ subsets: ["latin"], weight: ["500"] });
+export const ralewayFont = Raleway({ subsets: ["latin"], weight: ["500"] });
+
 export function formatPrice(
   price: number | string,
   options: {
@@ -21,9 +24,5 @@ export function formatPrice(
     notation,
     maximumFractionDigits: 0,
   }).format(numericPrice);
-
   return formattedPrice.replace(/\s/g, "");
 }
-
-export const promptFont = Prompt({ subsets: ["latin"], weight: ["400"] });
-export const ralewayFont = Raleway({ subsets: ["latin"], weight: ["400"] });

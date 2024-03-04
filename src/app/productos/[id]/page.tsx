@@ -1,8 +1,8 @@
 import api from "@/api";
-import { SelectForm } from "@/app/components/SelectForm";
 import { cn, formatPrice, promptFont } from "@/lib/utils";
 import { Params } from "@/lib/types";
 import Image from "next/image";
+import { SelectForm } from "./SelectForm";
 
 export const dynamicParams = false;
 export async function generateMetadata({ params: { id } }: Params) {
@@ -20,8 +20,7 @@ export async function generateStaticParams() {
 }
 export default async function page({ params: { id } }: Params) {
   const producto = await api.fetch(Number(id));
-  const discountPrice =
-    producto.price - (producto.price / 100) * producto.discount;
+  const discountPrice = producto.price - (producto.price / 100) * producto.discount;
   return (
     <div className="flex flex-col items-center">
       <div
@@ -39,12 +38,7 @@ export default async function page({ params: { id } }: Params) {
         </picture>
         <div className="flex flex-col items-start pt-10 md:w-[30%] md:pt-20">
           <h1 className="w-max text-4xl">{producto.name}</h1>
-          <h2
-            className={cn(
-              promptFont.className,
-              "mt-3 w-full font-sans antialiased",
-            )}
-          >
+          <h2 className={cn(promptFont.className, "mt-3 w-full font-sans antialiased")}>
             <strong className="mr-2  text-xl">{`${formatPrice(discountPrice)}`}</strong>
             <s className="mx-1 text-sm text-gray-500">{`${formatPrice(producto.price)}`}</s>
             <span className="ml-1 rounded-sm border-2 px-[2px] text-xs">

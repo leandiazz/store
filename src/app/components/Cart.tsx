@@ -1,26 +1,24 @@
 "use client";
 
-import Link from "next/link";
-import CartProductCard from "./CartProductCard";
-import { useCart } from "@/hooks/useCart";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { formatPrice } from "@/lib/utils";
-import { CartLogo } from "@/lib/Logos";
 import {
-  SheetTrigger,
-  SheetTitle,
-  SheetHeader,
-  SheetFooter,
-  SheetDescription,
-  SheetContent,
   Sheet,
   SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useCart } from "@/hooks/useCart";
+import { CartLogo } from "@/lib/Logos";
+import { formatPrice } from "@/lib/utils";
+import Link from "next/link";
+import CartProductCard from "./CartProductCard";
 
-export function Cart() {
+export default function Cart() {
   const { items } = useCart();
 
   const totalPrice = items.reduce(function (valorAnterior, items) {
@@ -30,54 +28,41 @@ export function Cart() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button
-          aria-label="carrito de compras"
-          className="h-10 max-w-max rounded-md p-2 pb-1 pl-4 pr-4
-        pt-1 hover:bg-accent focus-visible:outline-none"
-        >
-          <CartLogo />
-        </button>
+        <CartLogo aria-label="carrito de compras" className="cursor-pointer" />
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col">
-        <SheetHeader>
-          <SheetTitle className="text-start">mi pedido</SheetTitle>
-        </SheetHeader>
-        {items.length > 0 ? (
-          <div className="min-h-full">
-            <div className="pt-5">
-              <div className="flex justify-between">
-                <div className="flex">
-                  <span className="flex-1 pr-2">Subtotal:</span>
-                  <strong>{formatPrice(totalPrice)}</strong>
+      <SheetContent className="flex w-[85%] flex-col">
+        <ScrollArea className="h-full">
+          <SheetTitle className="text-start">
+            <span className="text-xl">Carrito</span>
+          </SheetTitle>
+
+          {items.length > 0 ? (
+            <SheetHeader>
+              <ScrollArea className="mr-4 h-[500px] pr-2 lg:h-[600px]">
+                <div className="flex h-full flex-col justify-between ">
+                  <ul className="mt-5 list-none">
+                    {items.map((cartItem) => (
+                      <li key={cartItem.key} className="mb-5 list-none">
+                        <CartProductCard cartItem={cartItem} />
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div>{`${items.length} ${items.length > 1 ? "productos" : "producto"}`}</div>
-              </div>
-              <Separator className="mt-3" />
-            </div>
-            <ScrollArea className="h-[70%] pr-5">
-              <div className="flex h-full flex-col justify-between ">
-                <ul className="mt-5 list-none ">
-                  {items.map((cartItem) => (
-                    <li key={cartItem.key} className="mb-5 list-none ">
-                      <CartProductCard cartItem={cartItem} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollArea>
-            <div className="mt-5">
-              <div>
-                <span className="mb-3 text-sm">
-                  Introducí tu CP y calculá el costo de envio.
-                </span>
-                <div className="flex">
-                  <Input type="number" className="mr-5 h-9 w-44" />
-                  <Button size={"sm"} variant={"outline"}>
-                    calcular
-                  </Button>
+              </ScrollArea>
+              <div className="">
+                <Separator className="my-2" />
+                <div className=" flex justify-between px-3">
+                  <div className="flex">
+                    <span className="flex-1 pr-2">Subtotal:</span>
+                    <strong>{formatPrice(totalPrice)}</strong>
+                  </div>
+                  <div>{`${items.length} ${items.length > 1 ? "productos" : "producto"}`}</div>
                 </div>
               </div>
-              <SheetFooter className="mt-5 flex flex-col items-center">
+              <p className="px-3 text-center text-sm">
+                Los gastos de envío e impuestos serán calculados al finalizar la compra.
+              </p>
+              <SheetFooter className="flex flex-col items-center">
                 <SheetClose asChild>
                   <Button asChild>
                     <Link href="/carrito" className="" aria-label="CHECKOUT">
@@ -86,13 +71,20 @@ export function Cart() {
                   </Button>
                 </SheetClose>
               </SheetFooter>
+            </SheetHeader>
+          ) : (
+            <div className="mt-5">
+              <p>
+                Tu carrito esta vacio, explora{" "}
+                <SheetClose asChild>
+                  <Button asChild variant={"link"} className="p-0 text-base">
+                    <Link href="/productos">productos</Link>
+                  </Button>
+                </SheetClose>
+              </p>
             </div>
-          </div>
-        ) : (
-          <div className="grid h-full place-items-center">
-            <h2>¡Aún no hay productos en tu pedido!</h2>
-          </div>
-        )}
+          )}
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );

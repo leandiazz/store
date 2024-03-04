@@ -3,23 +3,8 @@ import { TrashLogo } from "@/lib/Logos";
 import { cn, formatPrice, promptFont } from "@/lib/utils";
 import Link from "next/link";
 
-export default function CartProductCard({
-  cartItem,
-}: {
-  cartItem: NewCartItem;
-}) {
-  const {
-    color,
-    description,
-    discount,
-    id,
-    images,
-    key,
-    name,
-    price,
-    quantity,
-    type,
-  } = cartItem;
+export default function CartProductCard({ cartItem }: { cartItem: NewCartItem }) {
+  const { color, description, discount, id, images, key, name, price, quantity, type } = cartItem;
   const { removeProduct } = useCart();
   const handleDelete = () => {
     removeProduct(key);
@@ -28,21 +13,14 @@ export default function CartProductCard({
     <article className="flex h-full flex-row">
       <Link href={`/productos/${id}`}>
         <div className="min-w-24 max-w-24">
-          <img
-            src={images}
-            className="h-auto w-full overflow-clip"
-            alt={name}
-          ></img>
+          <img src={images} className="h-auto w-full overflow-clip" alt={name}></img>
         </div>
       </Link>
-      {/* DATOS */}
       <div className="flex w-full flex-col justify-between pl-3">
         <Link href={`/productos/${id}`}>
-          <div>
+          <div className="flex flex-col items-start">
             <h3>{name}</h3>
-            <p className={cn(promptFont.className, "text-sm")}>
-              {formatPrice(price)}
-            </p>
+            <p className={cn(promptFont.className, "text-sm")}>{formatPrice(price)}</p>
           </div>
         </Link>
         <div className="flex justify-between">
