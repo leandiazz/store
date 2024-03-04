@@ -1,13 +1,7 @@
 "use client";
 
 import { v4 as uuidv4 } from "uuid";
-import {
-  FormMessage,
-  FormItem,
-  FormField,
-  FormControl,
-  Form,
-} from "@/components/ui/form";
+import { FormMessage, FormItem, FormField, FormControl, Form } from "@/components/ui/form";
 import {
   SelectValue,
   SelectTrigger,
@@ -23,6 +17,9 @@ import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
 import { Label } from "@/components/ui/label";
+import { ToastAction } from "@/components/ui/toast";
+import Link from "next/link";
+import { ToastClose } from "@radix-ui/react-toast";
 
 const FormSchema = z.object({
   color: z.string({
@@ -45,6 +42,13 @@ export function SelectForm({ producto }: { producto: Product }) {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       description: "Producto agregado al carrito",
+      action: (
+        <ToastAction altText="Goto cart">
+          <ToastClose asChild>
+            <Link href="/carrito">Carrito</Link>
+          </ToastClose>
+        </ToastAction>
+      ),
     });
     addProduct({
       ...producto,

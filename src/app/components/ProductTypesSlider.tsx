@@ -56,7 +56,7 @@ const targets = [
 
 const ProductTypesSlider = () => {
   return (
-    <div className="relative box-border pb-6 pt-6 text-base leading-normal">
+    <div className=" box-border pb-6 pt-6 text-base leading-normal">
       <h2 className="pb-2 text-center text-2xl lg:text-3xl">
         <span>Nuestros productos</span>
       </h2>

@@ -9,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  NavigationMenuIndicator,
 } from "@/components/ui/navigation-menu";
 import {
   Sheet,
@@ -60,7 +61,10 @@ const items: { href: string; title: string; id: number }[] = [
 export default function Navbar() {
   return (
     <header className="z-10 block h-16 w-full md:h-24">
-      <NavigationMenu className="fixed top-0 flex h-16 w-full flex-col  bg-white px-2 md:h-24">
+      <NavigationMenu
+        onValueChange={onNavChange}
+        className="fixed top-0 flex h-16 w-full flex-col  bg-white px-2 md:h-24"
+      >
         <NavigationMenuList className="flex w-full list-none justify-between">
           <Sheet>
             <div className="md:hidden">
@@ -93,43 +97,59 @@ export default function Navbar() {
           </Sheet>
           <NavigationMenuItem className="md:pl-12">
             <Link href="/" legacyBehavior passHref>
-              <p className="cursor-pointer  text-2xl hover:text-purple-300 md:text-3xl">
-                Cruel Summer
-              </p>
+              <p className="cursor-pointer text-2xl md:text-3xl">Cruel Summer</p>
             </Link>
           </NavigationMenuItem>
-          <NavigationMenuItem className="hidden md:block">
-            <NavigationMenuTrigger>Productos</NavigationMenuTrigger>
-            <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
-              {items.map((item) => {
-                return (
-                  <Link
-                    href={item.href}
-                    key={item.id}
-                    legacyBehavior
-                    passHref
-                    aria-label={`seccion ${item.title}`}
-                  >
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "mx-2 my-1 w-[170px] hover:bg-purple-200",
-                      )}
+          <div className="flex">
+            <NavigationMenuItem className="hidden md:block">
+              <NavigationMenuTrigger className="submenu-trigger">Productos</NavigationMenuTrigger>
+              <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
+                {items.map((item) => {
+                  return (
+                    <Link
+                      href={item.href}
+                      key={item.id}
+                      legacyBehavior
+                      passHref
+                      aria-label={`seccion ${item.title}`}
                     >
-                      <h4>{item.title}</h4>
-                    </NavigationMenuLink>
-                  </Link>
-                );
-              })}
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem className="mr-auto md:pr-12">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <Cart />
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+                      <NavigationMenuLink
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          "mx-2 my-1 w-[170px] hover:bg-purple-200",
+                        )}
+                      >
+                        <h4>{item.title}</h4>
+                      </NavigationMenuLink>
+                    </Link>
+                  );
+                })}
+                <NavigationMenuIndicator />
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem className="mr-auto md:pr-12">
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <Cart />
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </div>
         </NavigationMenuList>
       </NavigationMenu>
     </header>
   );
+}
+
+function onNavChange() {
+  setTimeout(() => {
+    const triggers = document.querySelectorAll('.submenu-trigger[data-state="open"]');
+    if (triggers.length === 0) return;
+
+    const firstTrigger = triggers[0] as HTMLElement;
+    const viewports = document.getElementsByClassName("submenu-viewport");
+
+    if (viewports.length > 0) {
+      const viewport = viewports[0] as HTMLElement;
+      viewport.style.left = `${firstTrigger.offsetLeft}px`;
+    }
+  });
 }

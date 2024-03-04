@@ -65,7 +65,7 @@ export default function Cart() {
               <SheetFooter className="flex flex-col items-center">
                 <SheetClose asChild>
                   <Button asChild>
-                    <Link href="/carrito" className="" aria-label="CHECKOUT">
+                    <Link href="/carrito" className="w-full" aria-label="CHECKOUT">
                       CHECKOUT
                     </Link>
                   </Button>
@@ -75,7 +75,7 @@ export default function Cart() {
           ) : (
             <div className="mt-5">
               <p>
-                Tu carrito esta vacio, explora{" "}
+                Tu carrito esta vacio, explorar{" "}
                 <SheetClose asChild>
                   <Button asChild variant={"link"} className="p-0 text-base">
                     <Link href="/productos">productos</Link>
