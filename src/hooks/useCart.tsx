@@ -9,7 +9,7 @@ export interface NewCartItem {
   discount: number;
   type: string;
   color: string;
-  images: string;
+  imagesArray: string[];
   quantity: string;
   key: string;
 }
