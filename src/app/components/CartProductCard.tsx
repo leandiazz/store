@@ -1,11 +1,12 @@
 import { NewCartItem, useCart } from "@/hooks/useCart";
 import { TrashLogo } from "@/lib/Logos";
-import { cn, formatPrice, promptFont } from "@/lib/utils";
+import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function CartProductCard({ cartItem }: { cartItem: NewCartItem }) {
-  const { color, description, discount, id, images, key, name, price, quantity, type } = cartItem;
+  const { color, description, discount, id, imagesArray, key, name, price, quantity, type } =
+    cartItem;
   const { removeProduct } = useCart();
   const cartItemPrice = (price - (price / 100) * discount) * Number(quantity);
   const handleDelete = () => {
@@ -16,7 +17,7 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
       <Link href={`/productos/${id}`}>
         <div className="min-w-24 max-w-24">
           <Image
-            src={images}
+            src={imagesArray[0]}
             width={1400}
             height={1800}
             className="h-auto w-full overflow-clip"
