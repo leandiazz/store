@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cn, ralewayFont } from "@/lib/utils";
+import { cn, playfair_display, promptFont } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
@@ -33,7 +33,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="h-full">
-      <body className={cn("relative h-full font-sans antialiased", ralewayFont.className)}>
+      <body
+        className={cn(
+          "font-primary relative h-full antialiased",
+          promptFont.variable,
+          playfair_display.variable,
+        )}
+      >
         <Navbar />
         <main className="relative flex min-h-full flex-col">
           <div className="flex-1 flex-grow">{children}</div>

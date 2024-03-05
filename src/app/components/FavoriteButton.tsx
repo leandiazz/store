@@ -22,7 +22,7 @@ export default function FavoriteButton({ id }: { id: number }) {
   return (
     <button type="button" onClick={handleClick}>
       <CardFavLogo
-        className={`absolute right-2 top-0 fill-none text-red-600 opacity-20 active:animate-ping ${fav ? "fill-red-600 active:fill-none" : "fill-none active:fill-red-600"}`}
+        className={`absolute right-2 top-0 fill-none text-primary opacity-50 active:animate-ping ${fav ? "fill-primary active:fill-none" : "fill-none active:fill-red-600"}`}
       />
     </button>
   );

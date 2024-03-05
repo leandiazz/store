@@ -28,7 +28,7 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
         <Link href={`/productos/${id}`}>
           <div className="flex flex-col items-start">
             <h3>{name}</h3>
-            <p className={cn(promptFont.className, "text-sm")}>
+            <p className="text-sm">
               {formatPrice(cartItemPrice)}
               <span className="ml-2 border px-[1px] text-[10px]">{discount}% OFF</span>
             </p>

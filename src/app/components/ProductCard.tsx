@@ -10,13 +10,9 @@ import { cn, formatPrice } from "@/lib/utils";
 const prompt = Prompt({ subsets: ["latin"], weight: ["400"] });
 
 export default function ProductCard({ producto }: { producto: Product }) {
-  const discountPrice =
-    producto.price - (producto.price / 100) * producto.discount;
+  const discountPrice = producto.price - (producto.price / 100) * producto.discount;
   return (
-    <li
-      key={producto.id}
-      className="m-5 box-border flex shrink-0 grow-0 basis-full p-5"
-    >
+    <li key={producto.id} className="m-5 box-border flex shrink-0 grow-0 basis-full p-5">
       <div className="flex flex-col">
         <picture>
           <Link href={`/productos/${producto.id.toString()}`}>
@@ -34,7 +30,7 @@ export default function ProductCard({ producto }: { producto: Product }) {
             <p className="text-lg"> {producto.name}</p>
           </Link>
 
-          <p className={cn(prompt.className, "font-sans antialiased")}>
+          <p className="font-sans antialiased">
             <strong className="text-lg ">{`${formatPrice(discountPrice)} `}</strong>
             <s>{`${formatPrice(producto.price)}`}</s>
           </p>

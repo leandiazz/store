@@ -9,7 +9,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuIndicator,
 } from "@/components/ui/navigation-menu";
 import {
   Sheet,
@@ -69,7 +68,7 @@ export default function Navbar() {
         className="fixed top-0 flex w-full flex-col justify-between bg-white"
       >
         <NavigationMenuList className="flex h-full w-full list-none flex-col">
-          <p className="w-screen bg-pink-300 py-1 text-center">
+          <p className="w-screen bg-secondary py-1 text-center text-primary">
             Bienvenidx a nuestra tienda online!
           </p>
           <div className=" flex h-16 w-full list-none items-center justify-between px-2">
@@ -86,7 +85,9 @@ export default function Navbar() {
                 <SheetTitle className="text-center">
                   <SheetClose asChild>
                     <Link href="/">
-                      <span className="cursor-pointer font-normal text-pink-300">CRUEL SUMMER</span>
+                      <span className="font-logo cursor-pointer font-normal text-primary">
+                        CRUEL SUMMER
+                      </span>
                     </Link>
                   </SheetClose>
                 </SheetTitle>
@@ -105,7 +106,9 @@ export default function Navbar() {
             </Sheet>
             <NavigationMenuItem className=" md:pl-12">
               <Link href="/" legacyBehavior passHref>
-                <p className="cursor-pointer text-2xl text-pink-300 md:text-3xl">Cruel Summer</p>
+                <p className="font-logo cursor-pointer text-2xl text-primary md:text-3xl">
+                  Cruel Summer
+                </p>
               </Link>
             </NavigationMenuItem>
             <div className="flex">
@@ -124,7 +127,7 @@ export default function Navbar() {
                         <NavigationMenuLink
                           className={cn(
                             navigationMenuTriggerStyle(),
-                            "mx-2 my-1 w-[170px] hover:bg-purple-200",
+                            "mx-2 my-1 w-[170px] hover:bg-secondary",
                           )}
                         >
                           <h4>{item.title}</h4>

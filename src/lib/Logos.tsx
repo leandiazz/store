@@ -35,7 +35,7 @@ const FavsLogo: React.FC<FavsLogoProps> = ({ className, ...props }) => {
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className={cn("icon icon-tabler icon-tabler-trash", className)}
+        className={cn("icon icon-tabler icon-tabler-trash bg-primary", className)}
         width={25}
         height={25}
         viewBox="0 0 24 24"

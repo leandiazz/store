@@ -37,7 +37,7 @@ export default function Cart() {
       <SheetContent className="flex w-[85%] flex-col">
         <ScrollArea className="h-full">
           <SheetTitle className="text-start">
-            <span className="text-xl font-normal text-pink-300">Carrito</span>
+            <span className="text-xl font-normal text-primary">Carrito</span>
           </SheetTitle>
 
           {items.length > 0 ? (

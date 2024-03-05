@@ -1,13 +1,22 @@
 import { type ClassValue, clsx } from "clsx";
-import { Prompt, Raleway } from "next/font/google";
+import { Prompt, Playfair_Display } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const promptFont = Prompt({ subsets: ["latin"], weight: ["500"] });
-export const ralewayFont = Raleway({ subsets: ["latin"], weight: ["500"] });
+export const playfair_display = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-logo",
+});
+
+export const promptFont = Prompt({
+  subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-primary",
+});
 
 export function formatPrice(
   price: number | string,
