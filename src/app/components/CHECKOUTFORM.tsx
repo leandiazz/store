@@ -27,9 +27,11 @@ const formSchema = z.object({
   Address: z.string({
     required_error: "Campo requerido.",
   }),
-  PhoneNumber: z.string({
-    required_error: "Campo requerido.",
-  }),
+  PhoneNumber: z
+    .string({
+      required_error: "Campo requerido.",
+    })
+    .min(10, { message: "Ingresa el número sin espacios (1134060366)" }),
   CP: z.string({
     required_error: "Campo requerido.",
   }),
@@ -132,7 +134,7 @@ export default function CHECKOUTFORM() {
                 <FormItem className="w-[40%]">
                   <Label>Teléfono</Label>
                   <FormControl>
-                    <Input {...field} placeholder="1134060366" />
+                    <Input {...field} placeholder="1134060366" type="number" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

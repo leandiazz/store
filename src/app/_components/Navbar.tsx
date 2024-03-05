@@ -132,7 +132,6 @@ export default function Navbar() {
                       </Link>
                     );
                   })}
-                  <NavigationMenuIndicator />
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem className="mr-auto md:pr-12">
