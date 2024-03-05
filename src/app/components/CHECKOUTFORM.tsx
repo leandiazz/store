@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import { useMemo } from "react";
+import { formatPrice } from "@/lib/utils";
 
 const formSchema = z.object({
   email: z
@@ -56,26 +57,30 @@ export default function CHECKOUTFORM() {
         .reduce(
           (message, product) =>
             message.concat(
-              `• ${product.quantity} *${product.name}*\ncolor: ${product.color}\nprecio: $${(product.price - (product.price * product.discount) / 100) * Number(product.quantity)}\n\n`,
+              `• ${product.quantity} *${product.name}*\ncolor: ${product.color}\nprecio: ${formatPrice((product.price - (product.price * product.discount) / 100) * Number(product.quantity))}\n\n`,
             ),
-          "",
+          "*Datos del pedido*\n",
         )
         .concat(
-          `Total: $${items.reduce((total, product) => {
-            const productTotal =
-              Number(product.quantity) * (product.price - (product.price * product.discount) / 100);
-            return total + productTotal;
-          }, 0)}`,
-        )
-        .concat("\n\nMis datos: ..."),
+          `Total: ${formatPrice(
+            items.reduce((total, product) => {
+              const productTotal =
+                Number(product.quantity) *
+                (product.price - (product.price * product.discount) / 100);
+              return total + productTotal;
+            }, 0),
+          )}`,
+        ),
     [items],
   );
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    router.push(`https://wa.me/5492313131313?text=${encodeURIComponent(text)}`);
+    const infoText = `\n\n*Datos de envio*\nNombre y Apellido: ${values.lastName} ${values.firstName}\nEmail: ${values.email}\nTelefono: ${values.PhoneNumber}\nDireccion: ${values.Address} CP: ${values.CP}`;
+    router.push(`https://wa.me/5491134060366?text=${encodeURIComponent(text.concat(infoText))}`);
   }
   return (
     <div className="w-full">
+      <h1 className="w-full text-center text-xl lg:my-5">Tus datos</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="mb-3 flex w-full">

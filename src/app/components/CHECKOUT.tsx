@@ -2,65 +2,55 @@
 
 import Link from "next/link";
 import { useCart } from "@/hooks/useCart";
-import { cn, formatPrice, promptFont } from "@/lib/utils";
-import { TrashLogo } from "@/lib/Logos";
+import { formatPrice } from "@/lib/utils";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import CartProductCard from "./CartProductCard";
+import { Separator } from "@/components/ui/separator";
 
 export default function CHECKOUT() {
-  const { items, removeProduct } = useCart();
+  const { items } = useCart();
+
+  const totalPrice = items.reduce((total, product) => {
+    const productTotal =
+      Number(product.quantity) * (product.price - (product.price * product.discount) / 100);
+    return total + productTotal;
+  }, 0);
+
+  const totalProducts = items.reduce((total, product) => total + Number(product.quantity), 0);
 
   return (
     <div className="flex h-full w-full flex-col">
       <h1 className="w-full text-center text-xl">Tu orden</h1>
       {items.length > 0 ? (
-        <ul className="list-none lg:mx-8">
-          {items.map((cartItem) => {
-            const key = cartItem.key;
-            return (
-              <li key={cartItem.key} className="mb-5 list-none ">
-                <article className="flex h-full flex-row">
-                  <Link href={`/productos/${cartItem.id}`}>
-                    <div className="min-w-24 max-w-24">
-                      <img
-                        src={cartItem.images}
-                        className="h-auto w-full overflow-clip"
-                        alt={cartItem.name}
-                      ></img>
-                    </div>
-                  </Link>
-                  {/* DATOS */}
-                  <div className="flex w-full flex-col justify-between pl-3">
-                    <Link href={`/productos/${cartItem.id}`}>
-                      <div>
-                        <h3>{cartItem.name}</h3>
-                        <p className={cn(promptFont.className, "text-sm")}>
-                          {formatPrice(cartItem.price)}
-                        </p>
-                      </div>
-                    </Link>
-                    <div className="flex justify-between">
-                      <div className="flex flex-col">
-                        <p className="text-sm">
-                          color: <strong>{cartItem.color}</strong>
-                        </p>
-                        <p className="text-sm">
-                          cantidad: <strong>{cartItem.quantity}</strong>
-                        </p>
-                      </div>
-                      <button onClick={() => removeProduct(key)}>
-                        <TrashLogo />
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              </li>
-            );
-          })}
-        </ul>
+        <div>
+          <ScrollArea className="mr-4 h-[350px] pr-2 lg:h-[450px]">
+            <div className="flex h-full flex-col justify-between ">
+              <ul className="mt-5 list-none">
+                {items.map((cartItem) => (
+                  <li key={cartItem.key} className="mb-5 list-none">
+                    <CartProductCard cartItem={cartItem} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollArea>
+          <div className="">
+            <Separator className="my-2" />
+            <div className="flex justify-between px-3">
+              <div className="flex">
+                <span className="flex-1 pr-2">Subtotal:</span>
+                <strong>{formatPrice(totalPrice)}</strong>
+              </div>
+              <div>{`${totalProducts} ${totalProducts > 1 ? "productos" : "producto"}`}</div>
+            </div>
+          </div>
+          <p className="text-center text-sm">
+            Los gastos de envío e impuestos serán calculados al finalizar la compra.
+          </p>
+        </div>
       ) : (
         <div className="flex h-full w-full min-w-fit flex-col items-center justify-center">
-          <h2 className="whitespace-nowrap">
-            ¡Aún no hay productos en tu pedido!
-          </h2>
+          <h2 className="whitespace-nowrap">¡Aún no hay productos en tu pedido!</h2>
           <Link
             href="/productos"
             className="font-medium text-blue-600 hover:underline dark:text-blue-500"
@@ -72,3 +62,4 @@ export default function CHECKOUT() {
     </div>
   );
 }
+// todo MEJORAR LA LISTA DE LOS PRODUCTOS, NO SE MUESTRAN BIEN LOS PRECIOS NI EL TOTAL PRICE, AGREGAR Q EL ENVIO SE COSTEA POR WHATSAPP

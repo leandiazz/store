@@ -1,6 +1,7 @@
 import { NewCartItem, useCart } from "@/hooks/useCart";
 import { TrashLogo } from "@/lib/Logos";
 import { cn, formatPrice, promptFont } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function CartProductCard({ cartItem }: { cartItem: NewCartItem }) {
@@ -14,7 +15,13 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
     <article className="flex h-full flex-row">
       <Link href={`/productos/${id}`}>
         <div className="min-w-24 max-w-24">
-          <img src={images} className="h-auto w-full overflow-clip" alt={name}></img>
+          <Image
+            src={images}
+            width={1400}
+            height={1800}
+            className="h-auto w-full overflow-clip"
+            alt={name}
+          />
         </div>
       </Link>
       <div className="flex w-full flex-col justify-between pl-3">
