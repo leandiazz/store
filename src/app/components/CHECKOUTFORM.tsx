@@ -80,9 +80,9 @@ export default function CHECKOUTFORM() {
   }
   return (
     <div className="w-full">
-      <h1 className="w-full text-center text-xl lg:my-5">Tus datos</h1>
+      <h1 className="mt-4 w-full text-start text-2xl lg:mt-0">Tus datos</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="lg:mt-3">
           <div className="mb-3 flex w-full">
             <FormField
               control={form.control}
@@ -167,10 +167,11 @@ export default function CHECKOUTFORM() {
               )}
             />
           </div>
-
-          <Button type="submit" className="mt-4">
-            Ir a whatsapp
-          </Button>
+          <div className="flex w-full flex-col items-center">
+            <Button type="submit" className="mt-4 w-64">
+              Ir a whatsapp
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

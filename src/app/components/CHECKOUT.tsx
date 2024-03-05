@@ -20,7 +20,7 @@ export default function CHECKOUT() {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <h1 className="w-full text-center text-xl">Tu orden</h1>
+      <h1 className="mt-2 w-full text-start text-2xl lg:mt-0">Tu orden</h1>
       {items.length > 0 ? (
         <div>
           <ScrollArea className="mr-4 h-[350px] pr-2 lg:h-[450px]">
@@ -62,4 +62,3 @@ export default function CHECKOUT() {
     </div>
   );
 }
-// todo MEJORAR LA LISTA DE LOS PRODUCTOS, NO SE MUESTRAN BIEN LOS PRECIOS NI EL TOTAL PRICE, AGREGAR Q EL ENVIO SE COSTEA POR WHATSAPP

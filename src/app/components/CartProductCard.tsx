@@ -28,16 +28,19 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
         <Link href={`/productos/${id}`}>
           <div className="flex flex-col items-start">
             <h3>{name}</h3>
-            <p className={cn(promptFont.className, "text-sm")}>{formatPrice(cartItemPrice)}</p>
+            <p className={cn(promptFont.className, "text-sm")}>
+              {formatPrice(cartItemPrice)}
+              <span className="ml-2 border px-[1px] text-[10px]">{discount}% OFF</span>
+            </p>
           </div>
         </Link>
         <div className="flex justify-between">
           <div className="flex flex-col">
             <p className="text-sm">
-              color: <strong>{color}</strong>
+              Color: <span>{color.toLowerCase()}</span>
             </p>
             <p className="text-sm">
-              cantidad: <strong>{quantity}</strong>
+              Cantidad: <span>{quantity.toLowerCase()}</span>
             </p>
           </div>
           <button onClick={handleDelete}>

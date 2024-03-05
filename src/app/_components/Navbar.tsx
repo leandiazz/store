@@ -63,76 +63,86 @@ export default function Navbar() {
     <header className="z-10 block h-16 w-full md:h-24">
       <NavigationMenu
         onValueChange={onNavChange}
-        className="fixed top-0 flex h-16 w-full flex-col  bg-white px-2 md:h-24"
+        //   className="fixed top-0 flex h-16 w-full flex-col  bg-white px-2 md:h-24"
+        // >
+        //   <NavigationMenuList className="flex w-full list-none justify-between">
+        className="fixed top-0 flex w-full flex-col justify-between bg-white"
       >
-        <NavigationMenuList className="flex w-full list-none justify-between">
-          <Sheet>
-            <div className="md:hidden">
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <SheetTrigger>
-                  <MenuLogo />
-                </SheetTrigger>
-              </NavigationMenuLink>
-            </div>
-            <SheetContent side={"left"} className="flex w-[85%] flex-col ">
-              <SheetTitle className="text-center">
-                <SheetClose asChild>
-                  <Link href="/">
-                    <span>CRUEL SUMMER</span>
-                  </Link>
-                </SheetClose>
-              </SheetTitle>
-              <SheetHeader className="mt-3 h-full items-center gap-2">
-                {items.map((item) => (
-                  <Button asChild key={item.id} className="w-44" variant={"ghost"}>
-                    <SheetClose asChild>
-                      <Link href={item.href} aria-label={`seccion ${item.title}`}>
-                        <span className="text-lg">{item.title}</span>
-                      </Link>
-                    </SheetClose>
-                  </Button>
-                ))}
-              </SheetHeader>
-            </SheetContent>
-          </Sheet>
-          <NavigationMenuItem className="md:pl-12">
-            <Link href="/" legacyBehavior passHref>
-              <p className="cursor-pointer text-2xl md:text-3xl">Cruel Summer</p>
-            </Link>
-          </NavigationMenuItem>
-          <div className="flex">
-            <NavigationMenuItem className="hidden md:block">
-              <NavigationMenuTrigger className="submenu-trigger">Productos</NavigationMenuTrigger>
-              <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
-                {items.map((item) => {
-                  return (
-                    <Link
-                      href={item.href}
-                      key={item.id}
-                      legacyBehavior
-                      passHref
-                      aria-label={`seccion ${item.title}`}
-                    >
-                      <NavigationMenuLink
-                        className={cn(
-                          navigationMenuTriggerStyle(),
-                          "mx-2 my-1 w-[170px] hover:bg-purple-200",
-                        )}
-                      >
-                        <h4>{item.title}</h4>
-                      </NavigationMenuLink>
+        <NavigationMenuList className="flex h-full w-full list-none flex-col">
+          <p className="w-screen bg-pink-300 py-1 text-center">
+            Bienvenidx a nuestra tienda online!
+          </p>
+          <div className=" flex h-16 w-full list-none items-center justify-between px-2">
+            {/* Desde aca borrar al comentario de arriba */}
+            <Sheet>
+              <div className="md:hidden">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <SheetTrigger>
+                    <MenuLogo />
+                  </SheetTrigger>
+                </NavigationMenuLink>
+              </div>
+              <SheetContent side={"left"} className="flex w-[85%] flex-col ">
+                <SheetTitle className="text-center">
+                  <SheetClose asChild>
+                    <Link href="/">
+                      <span className="cursor-pointer font-normal text-pink-300">CRUEL SUMMER</span>
                     </Link>
-                  );
-                })}
-                <NavigationMenuIndicator />
-              </NavigationMenuContent>
+                  </SheetClose>
+                </SheetTitle>
+                <SheetHeader className="mt-3 h-full items-center gap-2">
+                  {items.map((item) => (
+                    <Button asChild key={item.id} className="w-44" variant={"ghost"}>
+                      <SheetClose asChild>
+                        <Link href={item.href} aria-label={`seccion ${item.title}`}>
+                          <span className="text-lg">{item.title}</span>
+                        </Link>
+                      </SheetClose>
+                    </Button>
+                  ))}
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+            <NavigationMenuItem className=" md:pl-12">
+              <Link href="/" legacyBehavior passHref>
+                <p className="cursor-pointer text-2xl text-pink-300 md:text-3xl">Cruel Summer</p>
+              </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem className="mr-auto md:pr-12">
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <Cart />
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            <div className="flex">
+              <NavigationMenuItem className="hidden md:block">
+                <NavigationMenuTrigger className="submenu-trigger">Productos</NavigationMenuTrigger>
+                <NavigationMenuContent className="flex w-[180px] flex-col items-center py-1">
+                  {items.map((item) => {
+                    return (
+                      <Link
+                        href={item.href}
+                        key={item.id}
+                        legacyBehavior
+                        passHref
+                        aria-label={`seccion ${item.title}`}
+                      >
+                        <NavigationMenuLink
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            "mx-2 my-1 w-[170px] hover:bg-purple-200",
+                          )}
+                        >
+                          <h4>{item.title}</h4>
+                        </NavigationMenuLink>
+                      </Link>
+                    );
+                  })}
+                  <NavigationMenuIndicator />
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem className="mr-auto md:pr-12">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Cart />
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </div>
           </div>
+          {/* borrar div */}
         </NavigationMenuList>
       </NavigationMenu>
     </header>

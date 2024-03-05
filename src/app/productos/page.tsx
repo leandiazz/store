@@ -13,7 +13,7 @@ export default async function page({ searchParams }: { searchParams: { q: string
   }
 
   return (
-    <div className="relative p-8">
+    <div className="relative mt-4 p-8 md:p-8">
       <form action={searchActions} className="ml-10 flex">
         <Input defaultValue={searchParams.q || ""} className="w-[200px]" name="q" />
         <Button type="submit" className="ml-2">
@@ -25,8 +25,8 @@ export default async function page({ searchParams }: { searchParams: { q: string
           return <ProductCard producto={producto} key={producto.id} />;
         })}
         {products.length === 0 ? (
-          <div className="mt-[30%]">
-            <p className="text-center">producto no encontrado</p>
+          <div className="ml-10 mt-14">
+            <p className="text-start">producto no encontrado</p>
           </div>
         ) : null}
       </ol>
