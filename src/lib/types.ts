@@ -6,7 +6,7 @@ export interface Product {
   discount: number;
   type: string;
   color: string;
-  images: string;
+  imagesArray: string[];
 }
 export interface Params {
   params: {

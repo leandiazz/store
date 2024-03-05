@@ -25,11 +25,11 @@ export default async function page({ params: { id } }: Params) {
     <div className="flex flex-col items-center">
       <div
         key={producto.id}
-        className="flex w-[90%] flex-col  px-10 pt-10 md:flex-row md:pl-20 md:pt-20"
+        className="flex w-[90%] flex-col px-10 pt-10 md:flex-row md:pl-20 md:pt-20"
       >
         <picture className="flex flex-col items-center justify-center md:pr-[7%]">
           <Image
-            src={producto.images}
+            src={producto.imagesArray[0]}
             alt={producto.name}
             width={1440}
             height={1800}

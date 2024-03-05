@@ -6,8 +6,8 @@ const api = {
       .then((res) => res.text())
       .then((text) => text.split("\n"));
     const products: Product[] = data.map((row) => {
-      const [id, name, description, price, discount, type, color, images] =
-        row.split(",");
+      const [id, name, description, price, discount, type, color, images] = row.split(",");
+      const imagesArray = images.split("-");
       return {
         id: Number(id),
         name,
@@ -16,7 +16,7 @@ const api = {
         discount: Number(discount),
         type,
         color,
-        images,
+        imagesArray,
       };
     });
     return products;
@@ -28,8 +28,8 @@ const api = {
       .then((res) => res.text())
       .then((text) => text.split("\n"));
     const products: Product[] = data.map((row) => {
-      const [id, name, description, price, discount, type, color, images] =
-        row.split(",");
+      const [id, name, description, price, discount, type, color, images] = row.split(",");
+      const imagesArray = images.split("-");
       return {
         id: Number(id),
         name,
@@ -38,7 +38,7 @@ const api = {
         discount: Number(discount),
         type,
         color,
-        images,
+        imagesArray,
       };
     });
 
@@ -54,9 +54,7 @@ const api = {
     return api
       .list()
       .then((products) =>
-        products.filter((product) =>
-          product.name.toLowerCase().includes(query.toLowerCase()),
-        ),
+        products.filter((product) => product.name.toLowerCase().includes(query.toLowerCase())),
       );
   },
 };

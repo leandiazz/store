@@ -2,12 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Prompt } from "next/font/google";
 import { Product } from "@/lib/types";
 import { DynamicFavoriteButton } from "./FavoriteButton";
-import { cn, formatPrice } from "@/lib/utils";
-
-const prompt = Prompt({ subsets: ["latin"], weight: ["400"] });
+import { formatPrice } from "@/lib/utils";
 
 export default function ProductCard({ producto }: { producto: Product }) {
   const discountPrice = producto.price - (producto.price / 100) * producto.discount;
@@ -17,7 +14,7 @@ export default function ProductCard({ producto }: { producto: Product }) {
         <picture>
           <Link href={`/productos/${producto.id.toString()}`}>
             <Image
-              src={producto.images}
+              src={producto.imagesArray[0]}
               width={1440}
               height={1800}
               alt={producto.name}
