@@ -1,5 +1,4 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import Image from "next/image";
 
 export function CardSkeleton() {
   return (

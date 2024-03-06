@@ -10,8 +10,10 @@ export interface NewCartItem {
   type: string;
   color: string;
   imagesArray: string[];
-  quantity: string;
+  colorArray: string[];
+  quantity: number;
   key: string;
+  priceDiscounted: number;
 }
 
 type CartState = {

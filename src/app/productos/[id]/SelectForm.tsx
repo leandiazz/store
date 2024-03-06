@@ -34,7 +34,6 @@ export type SelectedProductData = z.infer<typeof FormSchema>;
 
 export function SelectForm({ producto }: { producto: Product }) {
   const { addProduct } = useCart();
-  const coloresDisponibles = producto.color.split("-");
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -52,7 +51,8 @@ export function SelectForm({ producto }: { producto: Product }) {
     });
     addProduct({
       ...producto,
-      ...data,
+      color: data.color,
+      quantity: parseInt(data.quantity),
       key: uuidv4(),
     });
     form.reset();
@@ -73,7 +73,7 @@ export function SelectForm({ producto }: { producto: Product }) {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {coloresDisponibles.map((item) => (
+                  {producto.colorArray.map((item) => (
                     <SelectItem key={item} value={item}>
                       {item}
                     </SelectItem>

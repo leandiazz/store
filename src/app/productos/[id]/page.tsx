@@ -20,7 +20,6 @@ export async function generateStaticParams() {
 }
 export default async function page({ params: { id } }: Params) {
   const producto = await api.fetch(Number(id));
-  const discountPrice = producto.price - (producto.price / 100) * producto.discount;
   return (
     <div className="flex flex-col items-center">
       <div
@@ -39,7 +38,7 @@ export default async function page({ params: { id } }: Params) {
         <div className="flex flex-col items-start pt-10 md:w-[30%] md:pt-20">
           <h1 className="w-max text-4xl">{producto.name}</h1>
           <h2 className="mt-3 w-full font-sans antialiased">
-            <strong className="mr-2  text-xl">{`${formatPrice(discountPrice)}`}</strong>
+            <strong className="mr-2  text-xl">{`${formatPrice(producto.priceDiscounted)}`}</strong>
             <s className="mx-1 text-sm text-gray-500">{`${formatPrice(producto.price)}`}</s>
             <span className="ml-1 rounded-sm border-2 px-[2px] text-xs">
               {producto.discount}% OFF

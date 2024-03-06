@@ -8,6 +8,8 @@ const api = {
     const products: Product[] = data.map((row) => {
       const [id, name, description, price, discount, type, color, images] = row.split(",");
       const imagesArray = images.split("-");
+      const colorArray = color.split("-");
+      const priceDiscounted = Number(price) - (Number(price) / 100) * Number(discount);
       return {
         id: Number(id),
         name,
@@ -15,8 +17,9 @@ const api = {
         price: Number(price),
         discount: Number(discount),
         type,
-        color,
         imagesArray,
+        colorArray,
+        priceDiscounted,
       };
     });
     return products;
@@ -30,6 +33,9 @@ const api = {
     const products: Product[] = data.map((row) => {
       const [id, name, description, price, discount, type, color, images] = row.split(",");
       const imagesArray = images.split("-");
+      const colorArray = color.split("-");
+      const priceDiscounted = Number(price) - (Number(price) / 100) * Number(discount);
+
       return {
         id: Number(id),
         name,
@@ -37,8 +43,9 @@ const api = {
         price: Number(price),
         discount: Number(discount),
         type,
-        color,
         imagesArray,
+        colorArray,
+        priceDiscounted,
       };
     });
 

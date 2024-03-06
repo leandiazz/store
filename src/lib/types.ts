@@ -5,8 +5,9 @@ export interface Product {
   price: number;
   discount: number;
   type: string;
-  color: string;
   imagesArray: string[];
+  colorArray: string[];
+  priceDiscounted: number;
 }
 export interface Params {
   params: {

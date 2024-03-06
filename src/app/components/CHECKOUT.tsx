@@ -11,12 +11,11 @@ export default function CHECKOUT() {
   const { items } = useCart();
 
   const totalPrice = items.reduce((total, product) => {
-    const productTotal =
-      Number(product.quantity) * (product.price - (product.price * product.discount) / 100);
+    const productTotal = product.quantity * product.priceDiscounted;
     return total + productTotal;
   }, 0);
 
-  const totalProducts = items.reduce((total, product) => total + Number(product.quantity), 0);
+  const totalProducts = items.reduce((total, product) => total + product.quantity, 0);
 
   return (
     <div className="flex h-full w-full flex-col">

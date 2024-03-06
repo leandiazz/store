@@ -5,10 +5,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CartProductCard({ cartItem }: { cartItem: NewCartItem }) {
-  const { color, description, discount, id, imagesArray, key, name, price, quantity, type } =
-    cartItem;
+  const {
+    color,
+    description,
+    discount,
+    id,
+    imagesArray,
+    key,
+    name,
+    price,
+    quantity,
+    type,
+    colorArray,
+    priceDiscounted,
+  } = cartItem;
   const { removeProduct } = useCart();
-  const cartItemPrice = (price - (price / 100) * discount) * Number(quantity);
+  const cartItemPrice = priceDiscounted * quantity;
   const handleDelete = () => {
     removeProduct(key);
   };
@@ -41,7 +53,7 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
               Color: <span>{color.toLowerCase()}</span>
             </p>
             <p className="text-sm">
-              Cantidad: <span>{quantity.toLowerCase()}</span>
+              Cantidad: <span>{quantity}</span>
             </p>
           </div>
           <button onClick={handleDelete}>
