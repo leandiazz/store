@@ -44,7 +44,7 @@ export function SelectForm({ producto }: { producto: Product }) {
       description: "Producto agregado al carrito",
       action: (
         <ToastAction altText="Goto cart">
-          <ToastClose>
+          <ToastClose asChild>
             <Link href="/carrito">Carrito</Link>
           </ToastClose>
         </ToastAction>

@@ -1,39 +1,43 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
-const number = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-];
-
-function loading() {
+export function CardSkeleton() {
   return (
-    <div className="p-8">
-      <Skeleton className="ml-10 h-[26px] w-[210px] rounded" />
+    <li className="m-5 mt-0 box-border flex shrink-0 grow-0 basis-full p-5 pt-0">
+      <div className="flex flex-col">
+        <picture>
+          <img
+            src="/skeleton-img.webp"
+            width={1440}
+            height={1800}
+            alt="skeleton"
+            className="m-auto h-auto w-full animate-pulse"
+          />
+        </picture>
+        <div className="mb-2 mt-2 flex h-20 flex-col items-center text-center">
+          <Skeleton className="h-6 w-36" />
+          <Skeleton className="mt-1 h-6 w-20" />
+        </div>
+      </div>
+    </li>
+  );
+}
 
-      <ul className="m-0 grid h-screen list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {number.map((i) => (
-          <li
-            key={i.id}
-            className="m-5 box-border flex shrink-0 grow-0 basis-full"
-          >
-            <div className="flex h-full w-full flex-col p-5">
-              <div className="h-full w-full">
-                <Skeleton className="h-full  w-auto rounded" />
-              </div>
-              <div className=" h-auto w-full ">
-                <Skeleton className="m-auto mt-1 h-[22px] w-auto" />
-                <Skeleton className="m-auto mt-1 h-[22px] w-auto" />
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+export default function loading() {
+  return (
+    <div className="mt-4 p-8">
+      <Skeleton className="ml-10 h-10 w-[280px]" />
+
+      <div className="m-0 mt-5 grid list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
     </div>
   );
 }
-export default loading;

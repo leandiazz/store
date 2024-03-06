@@ -20,7 +20,7 @@ export default async function page({ searchParams }: { searchParams: { q: string
           Buscar
         </Button>
       </form>
-      <ol className="m-0 grid list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ol className="m-0 mt-5 grid list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((producto) => {
           return <ProductCard producto={producto} key={producto.id} />;
         })}

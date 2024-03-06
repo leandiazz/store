@@ -9,7 +9,7 @@ import { formatPrice } from "@/lib/utils";
 export default function ProductCard({ producto }: { producto: Product }) {
   const discountPrice = producto.price - (producto.price / 100) * producto.discount;
   return (
-    <li key={producto.id} className="m-5 box-border flex shrink-0 grow-0 basis-full p-5">
+    <li key={producto.id} className="m-5 mt-0 box-border flex shrink-0 grow-0 basis-full p-5 pt-0">
       <div className="flex flex-col">
         <picture>
           <Link href={`/productos/${producto.id.toString()}`}>
@@ -22,13 +22,13 @@ export default function ProductCard({ producto }: { producto: Product }) {
             />
           </Link>
         </picture>
-        <div className="relative mt-2 text-center">
+        <div className="relative mt-2 h-20 text-center">
           <Link href={`/productos/${producto.id.toString()}`}>
             <p className="text-lg"> {producto.name}</p>
           </Link>
 
           <p className="font-sans antialiased">
-            <strong className="text-lg ">{`${formatPrice(discountPrice)} `}</strong>
+            <strong className=" text-lg ">{`${formatPrice(discountPrice)} `}</strong>
             <s>{`${formatPrice(producto.price)}`}</s>
           </p>
           <DynamicFavoriteButton id={producto.id} />
