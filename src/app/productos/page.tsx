@@ -1,5 +1,5 @@
 import api from "@/api";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "./ProductCard";
 import { redirect } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";

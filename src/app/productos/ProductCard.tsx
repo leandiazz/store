@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Product } from "@/lib/types";
 import { DynamicFavoriteButton } from "./FavoriteButton";
-import { formatPrice } from "@/lib/utils";
+import { Product, formatPrice } from "@/lib/utils";
 
 export default function ProductCard({ producto }: { producto: Product }) {
   return (

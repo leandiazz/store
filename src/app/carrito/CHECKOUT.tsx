@@ -1,21 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "@/hooks/useCart";
-import { formatPrice } from "@/lib/utils";
+import { useCart, useCartData } from "@/hooks/useCart";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import CartProductCard from "./CartProductCard";
 import { Separator } from "@/components/ui/separator";
+import CartProductCard from "./CartProductCard";
 
 export default function CHECKOUT() {
   const { items } = useCart();
-
-  const totalPrice = items.reduce((total, product) => {
-    const productTotal = product.quantity * product.priceDiscounted;
-    return total + productTotal;
-  }, 0);
-
-  const totalProducts = items.reduce((total, product) => total + product.quantity, 0);
+  const { totalPrice, totalProducts } = useCartData();
 
   return (
     <div className="flex h-full w-full flex-col">
@@ -38,7 +31,7 @@ export default function CHECKOUT() {
             <div className="flex justify-between px-3">
               <div className="flex">
                 <span className="flex-1 pr-2">Subtotal:</span>
-                <strong>{formatPrice(totalPrice)}</strong>
+                <strong>{totalPrice}</strong>
               </div>
               <div>{`${totalProducts} ${totalProducts > 1 ? "productos" : "producto"}`}</div>
             </div>

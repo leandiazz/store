@@ -7,7 +7,7 @@ import {
 
 export default function FooterAccordion() {
   return (
-    <Accordion type="single" collapsible className="w-[300px]">
+    <Accordion type="single" collapsible className="my-5 w-[300px] ">
       <AccordionItem value="item-1">
         <AccordionTrigger>¿Como me puedo contactar?</AccordionTrigger>
         <AccordionContent>

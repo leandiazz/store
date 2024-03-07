@@ -2,23 +2,38 @@ import { type ClassValue, clsx } from "clsx";
 import { Prompt, Playfair_Display } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  discount: number;
+  type: string;
+  imagesArray: string[];
+  colorArray: string[];
+  priceDiscounted: number;
+}
+interface Params {
+  params: {
+    id: string;
+  };
 }
 
-export const playfair_display = Playfair_Display({
+const playfair_display = Playfair_Display({
   subsets: ["latin"],
   weight: ["500"],
   variable: "--font-logo",
 });
 
-export const promptFont = Prompt({
+const promptFont = Prompt({
   subsets: ["latin"],
   weight: ["300"],
   variable: "--font-primary",
 });
 
-export function formatPrice(
+const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+
+function formatPrice(
   price: number | string,
   options: {
     currency?: "ARS";
@@ -35,3 +50,6 @@ export function formatPrice(
   }).format(numericPrice);
   return formattedPrice.replace(/\s/g, "");
 }
+
+export { cn, playfair_display, promptFont, formatPrice };
+export type { Product, Params };

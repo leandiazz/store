@@ -13,48 +13,33 @@ import Link from "next/link";
 
 const targets = [
   {
-    heigth: 1800,
-    href: "tops",
     id: 1,
-    src: "/tops.jpg",
+    src: "/tops.webp",
     title: "Tops",
-    width: 1440,
   },
   {
-    heigth: 1800,
-    href: "faldas",
     id: 2,
-    src: "/faldas.jpg",
+    src: "/faldas.webp",
     title: "Faldas",
-    width: 1440,
   },
   {
-    heigth: 1800,
-    href: "pantalones",
     id: 3,
-    src: "/pantalones.jpg",
+    src: "/pantalones.webp",
     title: "Pantalones",
-    width: 1440,
   },
   {
-    heigth: 1800,
-    href: "remerones",
     id: 4,
-    src: "/remerones.jpg",
+    src: "/remerones.webp",
     title: "Remerones",
-    width: 1440,
   },
   {
-    heigth: 1800,
-    href: "vestidos",
     id: 5,
-    src: "/vestidos.jpg",
+    src: "/vestidos.webp",
     title: "Vestidos",
-    width: 1440,
   },
 ];
 
-const ProductTypesSlider = () => {
+export const CategoriesSlider = () => {
   return (
     <div className=" box-border pb-6 pt-6 text-base leading-normal">
       <h2 className="pb-2 text-center text-2xl lg:text-3xl">
@@ -80,8 +65,8 @@ const ProductTypesSlider = () => {
                       <Image
                         alt={target.title}
                         className="h-full w-full object-cover"
-                        width={target.width}
-                        height={target.heigth}
+                        width={720}
+                        height={900}
                         src={target.src}
                       ></Image>
                     </Link>
@@ -108,4 +93,3 @@ const ProductTypesSlider = () => {
     </div>
   );
 };
-export default ProductTypesSlider;

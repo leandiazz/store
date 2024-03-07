@@ -12,26 +12,37 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useCart } from "@/hooks/useCart";
-import { CartLogo } from "@/lib/Logos";
-import { formatPrice } from "@/lib/utils";
+import { useCart, useCartData } from "@/hooks/useCart";
 import Link from "next/link";
-import CartProductCard from "./CartProductCard";
+import CartProductCard from "../carrito/CartProductCard";
 
-export default function Cart() {
+export default function SideCart() {
+  const { totalPrice, totalProducts } = useCartData();
   const { items } = useCart();
-
-  const totalPrice = items.reduce((total, product) => {
-    const productTotal = product.quantity * product.priceDiscounted;
-    return total + productTotal;
-  }, 0);
-
-  const totalProducts = items.reduce((total, product) => total + product.quantity, 0);
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <CartLogo aria-label="carrito de compras" className="cursor-pointer" />
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-shopping-cart cursor-pointer"
+          aria-label="carrito de compras"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+          <path d="M17 17h-11v-14h-2" />
+          <path d="M6 5l14 1l-1 7h-13" />
+        </svg>
       </SheetTrigger>
       <SheetContent className="flex w-[85%] flex-col">
         <ScrollArea className="h-full">
@@ -57,7 +68,7 @@ export default function Cart() {
                 <div className=" flex justify-between px-3">
                   <div className="flex">
                     <span className="flex-1 pr-2">Subtotal:</span>
-                    <strong>{formatPrice(totalPrice)}</strong>
+                    <strong>{totalPrice}</strong>
                   </div>
                   <div>{`${totalProducts} ${totalProducts > 1 ? "productos" : "producto"}`}</div>
                 </div>

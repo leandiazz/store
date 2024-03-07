@@ -15,26 +15,30 @@ import { formatPrice } from "@/lib/utils";
 const formSchema = z.object({
   email: z
     .string({
-      required_error: "Campo requerido.",
+      required_error: "Campo requerido",
     })
-    .email(),
+    .email({
+      message: "Ingresa un email valido",
+    }),
   firstName: z.string({
-    required_error: "Campo requerido.",
+    required_error: "Campo requerido",
   }),
   lastName: z.string({
-    required_error: "Campo requerido.",
+    required_error: "Campo requerido",
   }),
   Address: z.string({
-    required_error: "Campo requerido.",
+    required_error: "Campo requerido",
   }),
   PhoneNumber: z
     .string({
-      required_error: "Campo requerido.",
+      required_error: "Campo requerido",
     })
     .min(10, { message: "Ingresa el número sin espacios (1134060366)" }),
-  CP: z.string({
-    required_error: "Campo requerido.",
-  }),
+  CP: z
+    .string({
+      required_error: "Campo requerido",
+    })
+    .min(4, { message: "Ingresa al menos 4 números" }),
 });
 
 export default function CHECKOUTFORM() {
@@ -59,16 +63,14 @@ export default function CHECKOUTFORM() {
         .reduce(
           (message, product) =>
             message.concat(
-              `• ${product.quantity} *${product.name}*\ncolor: ${product.color}\nprecio: ${formatPrice((product.price - (product.price * product.discount) / 100) * Number(product.quantity))}\n\n`,
+              `• ${product.quantity} *${product.name}*\ncolor: ${product.color}\nprecio: ${formatPrice(product.priceDiscounted * product.quantity)}\n\n`,
             ),
           "*Datos del pedido*\n",
         )
         .concat(
           `Total: ${formatPrice(
             items.reduce((total, product) => {
-              const productTotal =
-                Number(product.quantity) *
-                (product.price - (product.price * product.discount) / 100);
+              const productTotal = product.quantity * product.priceDiscounted;
               return total + productTotal;
             }, 0),
           )}`,
@@ -147,9 +149,9 @@ export default function CHECKOUTFORM() {
               name="Address"
               render={({ field }) => (
                 <FormItem className="mr-5 w-[70%]">
-                  <Label>Dirección</Label>
+                  <Label>Dirección (calle y número)</Label>
                   <FormControl>
-                    <Input {...field} placeholder="calle y numero" />
+                    <Input {...field} placeholder="calle y número" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

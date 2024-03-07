@@ -1,5 +1,5 @@
-import CHECKOUT from "../components/CHECKOUT";
-import CHECKOUTFORM from "../components/CHECKOUTFORM";
+import CHECKOUTFORM from "./CHECKOUTFORM";
+import CHECKOUT from "./CHECKOUT";
 
 export default function page() {
   return (

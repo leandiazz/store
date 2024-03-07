@@ -1,6 +1,5 @@
 import api from "@/api";
-import { cn, formatPrice, promptFont } from "@/lib/utils";
-import { Params } from "@/lib/types";
+import { Params, formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import { SelectForm } from "./SelectForm";
 

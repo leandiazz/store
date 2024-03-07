@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Cruel Summer",
     images: [
       {
-        url: "https://cruelsummer.vercel.app/PIC.png",
+        url: "https://cruelsummer.vercel.app/PIC.webp",
         width: 560,
         height: 365,
       },
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className="h-full">
       <body
         className={cn(
-          "font-primary relative h-full antialiased",
+          "relative h-full font-primary antialiased",
           promptFont.variable,
           playfair_display.variable,
         )}

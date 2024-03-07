@@ -1,3 +1,4 @@
+import { formatPrice } from "@/lib/utils";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -44,3 +45,17 @@ export const useCart = create<CartState>()(
     { name: "CartStorage", storage: createJSONStorage(() => localStorage) },
   ),
 );
+
+export const useCartData = () => {
+  const { items } = useCart();
+  const totalProducts = items.reduce((total, product) => total + product.quantity, 0);
+
+  const totalPriceValue = items.reduce((total, product) => {
+    const productTotal = product.quantity * product.priceDiscounted;
+    return total + productTotal;
+  }, 0);
+
+  const totalPrice = <span>{formatPrice(totalPriceValue)}</span>;
+
+  return { totalProducts, totalPrice };
+};

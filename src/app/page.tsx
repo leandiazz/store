@@ -1,12 +1,13 @@
-import Link from "next/link";
-import { HomePictures } from "./components/HomePictures";
-import ProductTypesSlider from "./components/ProductTypesSlider";
+import HomePictures from "./_components/HomePictures";
+import MostBuyedProducts from "./_components/MostBuyedProducts";
+import { CategoriesSlider } from "./_components/CategoriesSlider";
 
 export default async function Home() {
   return (
     <>
       <HomePictures />
-      <ProductTypesSlider />
+      <CategoriesSlider />
+      <MostBuyedProducts />
     </>
   );
 }

@@ -12,7 +12,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Product } from "@/lib/types";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
@@ -20,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import { ToastAction } from "@/components/ui/toast";
 import Link from "next/link";
 import { ToastClose } from "@radix-ui/react-toast";
+import { Product } from "@/lib/utils";
 
 const FormSchema = z.object({
   color: z.string({

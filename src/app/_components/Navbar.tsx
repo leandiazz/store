@@ -18,9 +18,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { MenuLogo } from "@/lib/Logos";
 import Link from "next/link";
-import Cart from "../components/Cart";
+import Cart from "../components/SideCart";
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -77,7 +76,23 @@ export default function Navbar() {
               <div className="md:hidden">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <SheetTrigger>
-                    <MenuLogo />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="icon icon-tabler icon-tabler-menu-2"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 6l16 0" />
+                      <path d="M4 12l16 0" />
+                      <path d="M4 18l16 0" />
+                    </svg>
                   </SheetTrigger>
                 </NavigationMenuLink>
               </div>
@@ -85,7 +100,7 @@ export default function Navbar() {
                 <SheetTitle className="text-center">
                   <SheetClose asChild>
                     <Link href="/">
-                      <span className="font-logo cursor-pointer font-normal text-primary">
+                      <span className="cursor-pointer font-logo font-normal text-primary">
                         CRUEL SUMMER
                       </span>
                     </Link>
@@ -106,7 +121,7 @@ export default function Navbar() {
             </Sheet>
             <NavigationMenuItem className=" md:pl-12">
               <Link href="/" legacyBehavior passHref>
-                <p className="font-logo cursor-pointer text-2xl text-primary md:text-3xl">
+                <p className="cursor-pointer font-logo text-2xl text-primary md:text-3xl">
                   Cruel Summer
                 </p>
               </Link>
