@@ -16,10 +16,4 @@ export async function POST(request: Request) {
   });
 }
 
-// fetch("https://cruelsummer.vercel.app/api/revalidate", {
-//   method: "POST",
-//   body: JSON.stringify({ key: "secret" }),
-// })
-//   .then(res => res.json())
-//   .then(data => console.log(data))
-//   .catch(error => console.error(error));
+// fetch("https://cruelsummer.vercel.app/api/revalidate",{method: "POST",body: JSON.stringify({ key: "secret" }),}).then(res => res.json()).then(data => console.log(data)).catch(error => console.error(error))
