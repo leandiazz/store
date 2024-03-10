@@ -1,7 +1,7 @@
 import api from "@/api";
 import { Params, formatPrice } from "@/lib/utils";
-import Image from "next/image";
 import { SelectForm } from "./SelectForm";
+import Image from "next/image";
 
 export const dynamicParams = false;
 export async function generateMetadata({ params: { id } }: Params) {
@@ -20,12 +20,12 @@ export async function generateStaticParams() {
 export default async function page({ params: { id } }: Params) {
   const producto = await api.fetch(Number(id));
   return (
-    <div className="flex flex-col items-center">
+    <article className="flex flex-col items-center">
       <div
         key={producto.id}
         className="flex w-[90%] flex-col px-10 pt-10 md:flex-row md:pl-20 md:pt-20"
       >
-        <picture className="flex flex-col items-center justify-center md:pr-[7%]">
+        <div className="flex flex-col items-center justify-center md:pr-[7%]">
           <Image
             src={producto.imagesArray[0]}
             alt={producto.name}
@@ -33,7 +33,7 @@ export default async function page({ params: { id } }: Params) {
             height={1800}
             className="w-full md:w-[500px]"
           />
-        </picture>
+        </div>
         <div className="flex flex-col items-start pt-10 md:w-[30%] md:pt-20">
           <h1 className="w-max text-4xl">{producto.name}</h1>
           <h2 className="mt-3 w-full font-sans antialiased">
@@ -46,6 +46,6 @@ export default async function page({ params: { id } }: Params) {
           <SelectForm producto={producto} />
         </div>
       </div>
-    </div>
+    </article>
   );
 }

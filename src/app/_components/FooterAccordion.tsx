@@ -7,13 +7,13 @@ import {
 
 export default function FooterAccordion() {
   return (
-    <Accordion type="single" collapsible className="my-5 w-[300px] ">
+    <Accordion type="single" collapsible className="my-5 mb-7 w-[300px]">
       <AccordionItem value="item-1">
         <AccordionTrigger>¿Como me puedo contactar?</AccordionTrigger>
         <AccordionContent>
           <p>
             Email:{" "}
-            <a href="cruelsummer.ind@gmail.com" target="_blank" className="hover:opacity-40">
+            <a href="cruelsummer.ind@gmail.com" target="_blank" className="hover:opacity-40" rel="">
               cruelsummer.ind@gmail.com
             </a>
           </p>
@@ -24,13 +24,19 @@ export default function FooterAccordion() {
               href="https://www.instagram.com/cruelsummer.ind/"
               target="_blank"
               className="hover:opacity-40"
+              rel=""
             >
               @cruelsummer.ind
             </a>
           </p>
           <p>
             Whatsapp:{" "}
-            <a href="https://wa.me/5491134060366" target="_blank" className="hover:opacity-40">
+            <a
+              href="https://wa.me/5491134060366"
+              target="_blank"
+              className="hover:opacity-40"
+              rel=""
+            >
               1134060366
             </a>
           </p>
