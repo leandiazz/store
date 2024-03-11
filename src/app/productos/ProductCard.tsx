@@ -5,7 +5,7 @@ import Image from "next/image";
 import { DynamicFavoriteButton } from "./FavoriteButton";
 import { Product, formatPrice } from "@/lib/utils";
 
-export default function ProductCard({ producto }: { producto: Product }) {
+export default function ProductCard(producto: Product) {
   return (
     <li key={producto.id} className="m-5 mt-0 box-border flex shrink-0 grow-0 basis-full p-5 pt-0">
       <div className="flex flex-col">

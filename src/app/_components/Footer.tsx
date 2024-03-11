@@ -16,7 +16,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/leandiaz/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer author external"
             >
               Leandro Diaz
             </a>

@@ -62,9 +62,6 @@ export default function Navbar() {
     <header className="z-10 block h-16 w-full md:h-24">
       <NavigationMenu
         onValueChange={onNavChange}
-        //   className="fixed top-0 flex h-16 w-full flex-col  bg-white px-2 md:h-24"
-        // >
-        //   <NavigationMenuList className="flex w-full list-none justify-between">
         className="fixed top-0 flex w-full flex-col justify-between bg-white"
       >
         <NavigationMenuList className="flex h-full w-full list-none flex-col">
@@ -72,7 +69,6 @@ export default function Navbar() {
             Bienvenidx a nuestra tienda online!
           </p>
           <div className=" flex h-16 w-full list-none items-center justify-between px-2">
-            {/* Desde aca borrar al comentario de arriba */}
             <Sheet>
               <div className="md:hidden">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -203,7 +199,6 @@ export default function Navbar() {
               </NavigationMenuItem>
             </div>
           </div>
-          {/* borrar div */}
         </NavigationMenuList>
       </NavigationMenu>
     </header>

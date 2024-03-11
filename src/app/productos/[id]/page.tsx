@@ -43,7 +43,7 @@ export default async function page({ params: { id } }: Params) {
               {producto.discount}% OFF
             </span>
           </h2>
-          <SelectForm producto={producto} />
+          <SelectForm {...producto} />
         </div>
       </div>
     </article>

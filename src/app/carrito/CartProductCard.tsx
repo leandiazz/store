@@ -24,7 +24,7 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
     removeProduct(key);
   };
   return (
-    <article className="flex h-full flex-row">
+    <article className="mb-5 flex h-full flex-row">
       <Link href={`/productos/${id}`}>
         <div className="min-w-24 max-w-24">
           <Image
@@ -38,23 +38,17 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
       </Link>
       <div className="flex w-full flex-col justify-between pl-3">
         <Link href={`/productos/${id}`}>
-          <div className="flex flex-col items-start">
-            <h3>{name}</h3>
-            <p className="text-sm">
-              {formatPrice(cartItemPrice)}
-              <span className="ml-2 border px-[1px] text-[10px]">{discount}% OFF</span>
-            </p>
-          </div>
+          <p className="text-sm">
+            <span className="block text-base">{name}</span>
+            {formatPrice(cartItemPrice)}
+            <span className="ml-2 border px-[1px] text-[10px]">{discount}% OFF</span>
+          </p>
         </Link>
         <div className="flex justify-between">
-          <div className="flex flex-col">
-            <p className="text-sm">
-              Color: <span>{color}</span>
-            </p>
-            <p className="text-sm">
-              Cantidad: <span>{quantity}</span>
-            </p>
-          </div>
+          <p className="flex flex-col text-sm">
+            <span>Color: {color}</span>
+            <span>Cantidad: {quantity}</span>
+          </p>
           <button onClick={handleDelete}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

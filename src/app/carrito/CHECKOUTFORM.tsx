@@ -83,7 +83,7 @@ export default function CHECKOUTFORM() {
     router.push(`https://wa.me/5491134060366?text=${encodeURIComponent(text.concat(infoText))}`);
   }
   return (
-    <div className="w-full">
+    <div className="h-full w-full min-w-fit lg:ml-5 lg:w-[50%]">
       <h1 className="mt-4 w-full text-start text-2xl lg:mt-0">Tus datos</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="lg:mt-3">

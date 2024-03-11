@@ -32,7 +32,7 @@ const FormSchema = z.object({
 
 export type SelectedProductData = z.infer<typeof FormSchema>;
 
-export function SelectForm({ producto }: { producto: Product }) {
+export function SelectForm(producto: Product) {
   const { addProduct } = useCart();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -59,7 +59,7 @@ export function SelectForm({ producto }: { producto: Product }) {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4" aria-label="contact form">
         <FormField
           control={form.control}
           name="color"
