@@ -19,21 +19,20 @@ export async function generateStaticParams() {
 }
 export default async function page({ params: { id } }: Params) {
   const producto = await api.fetch(Number(id));
+
   return (
     <article className="flex flex-col items-center">
       <div
         key={producto.id}
         className="flex w-[90%] flex-col px-10 pt-10 md:flex-row md:pl-20 md:pt-20"
       >
-        <div className="flex flex-col items-center justify-center md:pr-[7%]">
-          <Image
-            src={producto.imagesArray[0]}
-            alt={producto.name}
-            width={1440}
-            height={1800}
-            className="w-full md:w-[500px]"
-          />
-        </div>
+        <Image
+          src={producto.imagesArray[0]}
+          alt={producto.name}
+          width={1440}
+          height={1800}
+          className="w-full md:w-[500px] md:pr-[7%]"
+        />
         <div className="flex flex-col items-start pt-10 md:w-[30%] md:pt-20">
           <h1 className="w-max text-4xl">{producto.name}</h1>
           <h2 className="mt-3 w-full font-sans antialiased">
