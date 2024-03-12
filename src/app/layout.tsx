@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Leandro Diaz", url: "https://www.linkedin.com/in/leandiaz/" }],
   description:
     "Descubre la última moda en nuestra tienda de ropa femenina. Ofrecemos una amplia gama de faldas, tops, pantalones y remerones de alta calidad y estilo. ¡Viste con confianza y estilo con nuestras prendas únicas!",
-  keywords: ["tops", "vestidos", "remerones", "pantalones", "faldas", "ropa"],
+  keywords: ["tops", "vestidos", "remerones", "pantalones", "faldas", "vestimenta"],
   category: "indumentaria",
   openGraph: {
     title: "Cruel Summer",
