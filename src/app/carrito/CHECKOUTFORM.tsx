@@ -95,7 +95,7 @@ export default function CHECKOUTFORM() {
                 <FormItem className="mr-5 w-[50%]">
                   <Label>Nombre</Label>
                   <FormControl>
-                    <Input {...field} placeholder="cruel" />
+                    <Input {...field} placeholder="cruel" name="nombre" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -108,7 +108,7 @@ export default function CHECKOUTFORM() {
                 <FormItem className="w-[50%]">
                   <Label>Apellido</Label>
                   <FormControl>
-                    <Input {...field} placeholder="summer" />
+                    <Input {...field} placeholder="summer" name="apellido" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,7 +123,12 @@ export default function CHECKOUTFORM() {
                 <FormItem className="mr-5 w-[60%]">
                   <Label className="whitespace-nowrap">Correo electrónico</Label>
                   <FormControl>
-                    <Input placeholder="cruelsummer.ind@gmail.com" {...field} />
+                    <Input
+                      placeholder="cruelsummer.ind@gmail.com"
+                      {...field}
+                      type="email"
+                      name="email"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -136,7 +141,7 @@ export default function CHECKOUTFORM() {
                 <FormItem className="w-[40%]">
                   <Label>Teléfono</Label>
                   <FormControl>
-                    <Input {...field} placeholder="1134060366" type="number" />
+                    <Input {...field} placeholder="1134060366" type="tel" name="telefono" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
