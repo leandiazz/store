@@ -20,7 +20,7 @@ export default function SideCart() {
 
   return (
     <Sheet>
-      <SheetTrigger asChild>
+      <SheetTrigger className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none  disabled:opacity-50">
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

@@ -7,8 +7,11 @@ import { Product, formatPrice } from "@/lib/utils";
 
 export default function ProductCard(producto: Product) {
   return (
-    <li key={producto.id} className="m-5 mt-0 box-border flex shrink-0 grow-0 basis-full p-5 pt-0">
-      <div className="flex flex-col">
+    <article
+      key={producto.id}
+      className="m-5 mt-0 box-border flex shrink-0 grow-0 basis-full flex-col p-5 pt-0"
+    >
+      <header>
         <Link href={`/productos/${producto.id}`}>
           <Image
             src={producto.imagesArray[0]}
@@ -18,18 +21,18 @@ export default function ProductCard(producto: Product) {
             className="m-auto h-auto w-full object-cover"
           />
         </Link>
-        <div className="relative mt-2 h-20 text-center">
-          <p className="text-lg">
-            <Link href={`/productos/${producto.id}`}>{producto.name}</Link>
-          </p>
+      </header>
+      <footer className="relative mt-2 h-20 text-center">
+        <h1 className="text-xl">
+          <Link href={`/productos/${producto.id}`}>{producto.name}</Link>
+        </h1>
 
-          <p className="font-sans antialiased">
-            <strong className=" text-lg ">{`${formatPrice(producto.priceDiscounted)} `}</strong>
-            <s>{`${formatPrice(producto.price)}`}</s>
-          </p>
-          <DynamicFavoriteButton id={producto.id} />
-        </div>
-      </div>
-    </li>
+        <p className="font-sans antialiased">
+          <strong className=" text-lg ">{`${formatPrice(producto.priceDiscounted)}`}</strong>
+          <s>{`${formatPrice(producto.price)}`}</s>
+        </p>
+        <DynamicFavoriteButton id={producto.id} />
+      </footer>
+    </article>
   );
 }

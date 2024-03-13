@@ -70,29 +70,25 @@ export default function Navbar() {
           </p>
           <div className=" flex h-16 w-full list-none items-center justify-between px-2">
             <Sheet>
-              <div className="md:hidden">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <SheetTrigger>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="icon icon-tabler icon-tabler-menu-2"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M4 6l16 0" />
-                      <path d="M4 12l16 0" />
-                      <path d="M4 18l16 0" />
-                    </svg>
-                  </SheetTrigger>
-                </NavigationMenuLink>
-              </div>
+              <SheetTrigger className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none  disabled:opacity-50 md:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-menu-2"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 6l16 0" />
+                  <path d="M4 12l16 0" />
+                  <path d="M4 18l16 0" />
+                </svg>
+              </SheetTrigger>
               <SheetContent side={"left"} className="flex w-[85%] flex-col ">
                 <SheetTitle className="text-center">
                   <SheetClose asChild>
@@ -193,9 +189,7 @@ export default function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem className="mr-auto md:pr-12">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <Cart />
-                </NavigationMenuLink>
+                <Cart />
               </NavigationMenuItem>
             </div>
           </div>
