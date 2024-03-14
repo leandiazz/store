@@ -19,7 +19,7 @@ export default function CartList() {
         </div>
       </ScrollArea>
       <Separator className="my-2" />
-      <p className="flex justify-between">
+      <p className="flex justify-between px-4">
         <span className="flex-1 pr-2">
           Subtotal: <strong>{totalPrice}</strong>
         </span>
