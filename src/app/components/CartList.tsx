@@ -19,15 +19,17 @@ export default function CartList() {
         </div>
       </ScrollArea>
       <Separator className="my-2" />
-      <p className="flex justify-between px-4">
-        <span className="flex-1 pr-2">
-          Subtotal: <strong>{totalPrice}</strong>
-        </span>
-        <span>{`${totalProducts} ${totalProducts > 1 ? "productos" : "producto"}`}</span>
-      </p>
-      <h3 className="px-3 text-center text-sm">
-        Los gastos de envío e impuestos serán calculados al finalizar la compra.
-      </h3>
+      <footer>
+        <p className="flex justify-between px-4">
+          <span>
+            Subtotal: <strong>{totalPrice}</strong>
+          </span>
+          <span>{`${totalProducts} ${totalProducts > 1 ? "productos" : "producto"}`}</span>
+        </p>
+        <h3 className="px-3 text-center text-sm">
+          Los gastos de envío e impuestos serán calculados al finalizar la compra.
+        </h3>
+      </footer>
     </section>
   );
 }
