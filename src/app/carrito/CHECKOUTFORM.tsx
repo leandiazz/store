@@ -83,106 +83,110 @@ export default function CHECKOUTFORM() {
     router.push(`https://wa.me/5491134060366?text=${encodeURIComponent(text.concat(infoText))}`);
   }
   return (
-    <div className="h-full w-full min-w-fit lg:ml-5 lg:w-[50%]">
-      <h1 className="mt-4 w-full text-start text-2xl lg:mt-0">Tus datos</h1>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="lg:mt-3">
-          <div className="mb-3 flex w-full">
-            <FormField
-              control={form.control}
-              name="firstName"
-              render={({ field }) => (
-                <FormItem className="mr-5 w-[50%]">
-                  <Label>Nombre</Label>
-                  <FormControl>
-                    <Input {...field} placeholder="cruel" name="nombre" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="lastName"
-              render={({ field }) => (
-                <FormItem className="w-[50%]">
-                  <Label>Apellido</Label>
-                  <FormControl>
-                    <Input {...field} placeholder="summer" name="apellido" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="mb-3 flex w-full">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem className="mr-5 w-[60%]">
-                  <Label className="whitespace-nowrap">Correo electrónico</Label>
-                  <FormControl>
-                    <Input
-                      placeholder="cruelsummer.ind@gmail.com"
-                      {...field}
-                      type="email"
-                      name="email"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="PhoneNumber"
-              render={({ field }) => (
-                <FormItem className="w-[40%]">
-                  <Label>Teléfono</Label>
-                  <FormControl>
-                    <Input {...field} placeholder="1134060366" type="tel" name="telefono" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="flex w-full">
-            <FormField
-              control={form.control}
-              name="Address"
-              render={({ field }) => (
-                <FormItem className="mr-5 w-[70%]">
-                  <Label>Dirección (calle y número)</Label>
-                  <FormControl>
-                    <Input {...field} placeholder="calle y número" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="CP"
-              render={({ field }) => (
-                <FormItem className="w-[30%]">
-                  <Label className="whitespace-nowrap">Código postal</Label>
-                  <FormControl>
-                    <Input {...field} placeholder="1879" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="flex w-full flex-col items-center">
-            <Button type="submit" className="mt-4 w-64">
-              Ir a whatsapp
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+    <section className="mb-5 mt-5 flex h-full w-full flex-col items-center lg:ml-4 lg:mt-0 lg:w-[40%]">
+      <article className="w-full max-w-[550px]">
+        <h1 className="mt-2 w-full text-center text-2xl text-primary underline underline-offset-4 lg:mt-0">
+          Tus datos
+        </h1>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="mt-3">
+            <div className="mb-3 flex w-full">
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem className="mr-5 w-[50%]">
+                    <Label>Nombre</Label>
+                    <FormControl>
+                      <Input {...field} placeholder="cruel" name="nombre" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem className="w-[50%]">
+                    <Label>Apellido</Label>
+                    <FormControl>
+                      <Input {...field} placeholder="summer" name="apellido" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="mb-3 flex w-full">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="mr-5 w-[60%]">
+                    <Label className="whitespace-nowrap">Correo electrónico</Label>
+                    <FormControl>
+                      <Input
+                        placeholder="cruelsummer.ind@gmail.com"
+                        {...field}
+                        type="email"
+                        name="email"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="PhoneNumber"
+                render={({ field }) => (
+                  <FormItem className="w-[40%]">
+                    <Label>Teléfono</Label>
+                    <FormControl>
+                      <Input {...field} placeholder="1134060366" type="tel" name="telefono" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex w-full">
+              <FormField
+                control={form.control}
+                name="Address"
+                render={({ field }) => (
+                  <FormItem className="mr-5 w-[70%]">
+                    <Label>Dirección (calle y número)</Label>
+                    <FormControl>
+                      <Input {...field} placeholder="calle y número" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="CP"
+                render={({ field }) => (
+                  <FormItem className="w-[30%]">
+                    <Label className="whitespace-nowrap">Código postal</Label>
+                    <FormControl>
+                      <Input {...field} placeholder="1879" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex w-full flex-col items-center">
+              <Button type="submit" className="mt-6 w-64">
+                Ir a whatsapp
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </article>
+    </section>
   );
 }
