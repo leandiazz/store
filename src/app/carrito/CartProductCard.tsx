@@ -38,14 +38,14 @@ export default function CartProductCard({ cartItem }: { cartItem: NewCartItem })
       </Link>
       <div className="flex w-full flex-col justify-between pl-3">
         <Link href={`/productos/${id}`}>
-          <p className="text-sm">
-            <span className="block text-base">{name}</span>
-            {formatPrice(cartItemPrice)}
-            <span className="ml-2 border px-[1px] text-[10px]">{discount}% OFF</span>
+          <p className=" text-start">
+            <span className="block">{name}</span>
+            <span className="h-6 text-sm">{formatPrice(cartItemPrice)}</span>
+            <span className="ml-2 border px-[1px] align-middle text-[10px]">{discount}% OFF</span>
           </p>
         </Link>
         <div className="flex justify-between">
-          <p className="flex flex-col text-sm">
+          <p className="flex flex-col text-start text-sm">
             <span>Color: {color}</span>
             <span>Cantidad: {quantity}</span>
           </p>
