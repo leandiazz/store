@@ -1,13 +1,21 @@
 "use client";
 
 import { v4 as uuidv4 } from "uuid";
-import { FormMessage, FormItem, FormField, FormControl, Form } from "@/components/ui/form";
+import {
+  FormMessage,
+  FormItem,
+  FormField,
+  FormControl,
+  Form,
+  FormLabel,
+} from "@/components/ui/form";
 import {
   SelectValue,
   SelectTrigger,
   SelectItem,
   SelectContent,
   Select,
+  SelectGroup,
 } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -23,7 +31,7 @@ import { Product } from "@/lib/utils";
 
 const FormSchema = z.object({
   color: z.string({
-    required_error: "Elije el color de prenda.",
+    required_error: "Elije el color",
   }),
   quantity: z.string({
     required_error: "Elije la cantidad",
@@ -64,20 +72,22 @@ export function SelectForm(producto: Product) {
           control={form.control}
           name="color"
           render={({ field }) => (
-            <FormItem className="mb-3 space-y-0">
-              <Label>Color</Label>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormItem className="mb-3 w-32 space-y-0">
+              <FormLabel>Color</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="elije color" />
+                    {field.value ? <SelectValue placeholder="elegir" /> : "elegir"}
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {producto.colorArray.map((item) => (
-                    <SelectItem key={item} value={item}>
-                      {item}
-                    </SelectItem>
-                  ))}
+                  <SelectGroup>
+                    {producto.colorArray.map((item) => (
+                      <SelectItem key={item} value={item}>
+                        {item}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -88,24 +98,20 @@ export function SelectForm(producto: Product) {
           control={form.control}
           name="quantity"
           render={({ field }) => (
-            <FormItem className="mb-5 space-y-0">
-              <Label>Cantidad</Label>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormItem className="mb-3 w-32 space-y-0">
+              <FormLabel>Cantidad</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="elije cantidad" />
+                    {field.value ? <SelectValue placeholder="elegir" /> : "elegir"}
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem key={1} value={"1"}>
-                    1
-                  </SelectItem>
-                  <SelectItem key={2} value={"2"}>
-                    2
-                  </SelectItem>
-                  <SelectItem key={3} value={"3"}>
-                    3
-                  </SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="1">1</SelectItem>
+                    <SelectItem value="2">2</SelectItem>
+                    <SelectItem value="3">3</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
               <FormMessage />
