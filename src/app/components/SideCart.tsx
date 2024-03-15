@@ -62,8 +62,8 @@ export default function SideCart() {
               </SheetFooter>
             </SheetHeader>
           ) : (
-            <p className="mt-5">
-              Tu carrito esta vacio, explorar{" "}
+            <p className="mt-5 block">
+              <span>Carrito vacío, explorar </span>
               <SheetClose asChild>
                 <Button asChild variant={"link"} className="p-0 text-base">
                   <Link href="/productos">productos</Link>
