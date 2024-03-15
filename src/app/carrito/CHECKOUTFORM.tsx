@@ -96,9 +96,9 @@ export default function CHECKOUTFORM() {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem className="mr-5 w-[50%]">
-                    <Label>Nombre</Label>
+                    <Label htmlFor="nombre">Nombre</Label>
                     <FormControl>
-                      <Input {...field} placeholder="cruel" name="nombre" />
+                      <Input {...field} placeholder="cruel" name="nombre" id="nombre" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,9 +109,9 @@ export default function CHECKOUTFORM() {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem className="w-[50%]">
-                    <Label>Apellido</Label>
+                    <Label htmlFor="apellido">Apellido</Label>
                     <FormControl>
-                      <Input {...field} placeholder="summer" name="apellido" />
+                      <Input {...field} placeholder="summer" name="apellido" id="apellido" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -124,13 +124,16 @@ export default function CHECKOUTFORM() {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="mr-5 w-[60%]">
-                    <Label className="whitespace-nowrap">Correo electrónico</Label>
+                    <Label className="whitespace-nowrap" htmlFor="email">
+                      Correo electrónico
+                    </Label>
                     <FormControl>
                       <Input
                         placeholder="cruelsummer.ind@gmail.com"
                         {...field}
                         type="email"
                         name="email"
+                        id="email"
                       />
                     </FormControl>
                     <FormMessage />
@@ -142,9 +145,15 @@ export default function CHECKOUTFORM() {
                 name="PhoneNumber"
                 render={({ field }) => (
                   <FormItem className="w-[40%]">
-                    <Label>Teléfono</Label>
+                    <Label htmlFor="telefono">Teléfono</Label>
                     <FormControl>
-                      <Input {...field} placeholder="1134060366" type="tel" name="telefono" />
+                      <Input
+                        {...field}
+                        placeholder="1134060366"
+                        type="tel"
+                        name="telefono"
+                        id="telefono"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -157,9 +166,9 @@ export default function CHECKOUTFORM() {
                 name="Address"
                 render={({ field }) => (
                   <FormItem className="mr-5 w-[70%]">
-                    <Label>Dirección (calle y número)</Label>
+                    <Label htmlFor="address">Dirección (calle y número)</Label>
                     <FormControl>
-                      <Input {...field} placeholder="calle y número" />
+                      <Input {...field} placeholder="calle y número" id="address" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -170,9 +179,11 @@ export default function CHECKOUTFORM() {
                 name="CP"
                 render={({ field }) => (
                   <FormItem className="w-[30%]">
-                    <Label className="whitespace-nowrap">Código postal</Label>
+                    <Label className="whitespace-nowrap" htmlFor="CP">
+                      Código postal
+                    </Label>
                     <FormControl>
-                      <Input {...field} placeholder="1879" />
+                      <Input {...field} placeholder="1879" id="CP" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
