@@ -19,9 +19,10 @@ export default function HomePictures() {
             <Image
               src={img.src}
               alt="gallery-img"
+              loading="eager"
               width={1440}
               height={1800}
-              className="h-svh w-full object-cover object-center"
+              className="aspect-4/5 h-svh w-full object-cover object-center"
             />
           </CarouselItem>
         ))}

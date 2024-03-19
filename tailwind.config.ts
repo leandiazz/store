@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      aspectRatio: {
+        "4/5": "4 / 5",
+      },
       fontFamily: {
         logo: ["var(--font-logo)"],
         primary: ["var(--font-primary)"],

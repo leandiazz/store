@@ -65,12 +65,15 @@ export default function Navbar() {
         className="fixed top-0 flex w-full flex-col justify-between bg-white"
       >
         <NavigationMenuList className="flex h-full w-full list-none flex-col">
-          <p className="w-screen bg-secondary py-1 text-center text-primary">
+          <p className="w-screen bg-secondary py-1 text-center text-primary opacity-100">
             Bienvenidx a nuestra tienda online!
           </p>
-          <div className=" flex h-16 w-full list-none items-center justify-between px-2">
+          <div className="flex h-16 w-full list-none items-center justify-between px-2">
             <Sheet>
-              <SheetTrigger className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none  disabled:opacity-50 md:hidden">
+              <SheetTrigger
+                className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none  disabled:opacity-50 md:hidden"
+                aria-label="menu"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-menu-2"
@@ -123,13 +126,13 @@ export default function Navbar() {
                       xmlns="http://www.w3.org/2000/svg"
                       className="mr-2"
                     >
-                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                       <g
                         id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         stroke="#CCCCCC"
-                        stroke-width="25"
+                        strokeWidth="25"
                       ></g>
                       <g id="SVGRepo_iconCarrier">
                         <defs>
@@ -140,8 +143,8 @@ export default function Navbar() {
                             r="3263.54"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop offset=".09" stop-color="#fa8f21"></stop>
-                            <stop offset=".78" stop-color="#d82d7e"></stop>
+                            <stop offset=".09" stopColor="#fa8f21"></stop>
+                            <stop offset=".78" stopColor="#d82d7e"></stop>
                           </radialGradient>
                           <radialGradient
                             id="1"
@@ -150,8 +153,8 @@ export default function Navbar() {
                             r="2572.12"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0"></stop>
-                            <stop offset="1" stop-color="#8c3aaa"></stop>
+                            <stop offset=".64" stopColor="#8c3aaa" stopOpacity="0"></stop>
+                            <stop offset="1" stopColor="#8c3aaa"></stop>
                           </radialGradient>
                         </defs>
                         <path
