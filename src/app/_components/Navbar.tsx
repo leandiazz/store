@@ -5,10 +5,8 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  NavigationMenuTrigger
 } from "@/components/ui/navigation-menu";
 import {
   Sheet,
@@ -21,8 +19,6 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import Cart from "../components/SideCart";
-import React from "react";
-import { cn } from "@/lib/utils";
 
 const items: { href: string; title: string; id: number }[] = [
   {
@@ -31,29 +27,29 @@ const items: { href: string; title: string; id: number }[] = [
     id: 1,
   },
   {
-    href: "/productos?q=vestidos",
+    href: "/productos?q=vestido",
     id: 2,
     title: "Vestidos",
   },
   {
-    href: "/productos?q=faldas",
+    href: "/productos?q=falda",
     id: 3,
     title: "Faldas",
   },
   {
-    href: "/productos?q=tops",
+    href: "/productos?q=top",
     id: 4,
     title: "Tops",
   },
   {
-    href: "/productos?q=pantalones",
+    href: "/productos?q=pantalon",
     id: 5,
     title: "Pantalones",
   },
   {
-    href: "/productos?q=remerones",
+    href: "/productos?q=remera",
     id: 6,
-    title: "Remerones",
+    title: "Remeras",
   },
 ];
 
@@ -73,6 +69,7 @@ export default function Navbar() {
               <SheetTrigger
                 className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none  disabled:opacity-50 md:hidden"
                 aria-label="menu"
+                asChild
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +185,7 @@ export default function Navbar() {
                 </SheetFooter>
               </SheetContent>
             </Sheet>
-            <NavigationMenuItem className=" md:pl-12">
+            <NavigationMenuItem className=" md:pl-12" asChild>
               <Link href="/" legacyBehavior passHref>
                 <p className="cursor-pointer font-logo text-2xl text-primary md:text-3xl">
                   Cruel Summer
@@ -208,14 +205,9 @@ export default function Navbar() {
                         passHref
                         aria-label={`seccion ${item.title}`}
                       >
-                        <NavigationMenuLink
-                          className={cn(
-                            navigationMenuTriggerStyle(),
-                            "mx-2 my-1 w-[170px] hover:bg-secondary",
-                          )}
-                        >
-                          <h4>{item.title}</h4>
-                        </NavigationMenuLink>
+                        <h4 className="group mx-2 my-1 inline-flex h-10 w-[170px] cursor-pointer items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50">
+                          {item.title}
+                        </h4>
                       </Link>
                     );
                   })}
