@@ -16,7 +16,7 @@ export default function FooterAccordion() {
               href="cruelsummer.ind@gmail.com"
               target="_blank"
               className="flex hover:opacity-40"
-              rel=""
+              rel="external"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export default function FooterAccordion() {
               href="https://www.instagram.com/cruelsummer.ind/"
               target="_blank"
               className="flex hover:opacity-40"
-              rel=""
+              rel="external"
             >
               <svg
                 width="20"
@@ -98,7 +98,7 @@ export default function FooterAccordion() {
               href="https://wa.me/5491134060366"
               target="_blank"
               className="flex hover:opacity-40"
-              rel=""
+              rel="external"
             >
               <svg
                 width="21"
