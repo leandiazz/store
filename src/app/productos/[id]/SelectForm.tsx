@@ -1,33 +1,32 @@
 "use client";
 
-import { v4 as uuidv4 } from "uuid";
+import { Button } from "@/components/ui/button";
 import {
-  FormMessage,
-  FormItem,
-  FormField,
-  FormControl,
   Form,
+  FormControl,
+  FormField,
+  FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import {
-  SelectValue,
-  SelectTrigger,
-  SelectItem,
-  SelectContent,
   Select,
+  SelectContent,
   SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { toast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/hooks/useCart";
-import { Label } from "@/components/ui/label";
 import { ToastAction } from "@/components/ui/toast";
-import Link from "next/link";
-import { ToastClose } from "@radix-ui/react-toast";
+import { toast } from "@/components/ui/use-toast";
+import { useCart } from "@/hooks/useCart";
 import { Product } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ToastClose } from "@radix-ui/react-toast";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { v4 as uuidv4 } from "uuid";
+import { z } from "zod";
 
 const FormSchema = z.object({
   color: z.string({
@@ -49,10 +48,12 @@ export function SelectForm(producto: Product) {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       description: "Producto agregado al carrito",
+
+      duration: 3000,
       action: (
-        <ToastAction altText="Goto cart" asChild>
+        <ToastAction altText="Goto cart">
           <ToastClose asChild>
-            <Link href="/carrito">Carrito</Link>
+            <Link href="/carrito" >Carrito</Link>
           </ToastClose>
         </ToastAction>
       ),
