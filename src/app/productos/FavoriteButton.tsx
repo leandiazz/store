@@ -22,7 +22,7 @@ export default function FavoriteButton({ id }: { id: number }) {
     <button type="button" onClick={handleClick} className="h-0 w-0 ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className={`icon icon-tabler icon-tabler-heart absolute right-2 top-0 fill-none text-primary opacity-50 active:animate-ping ${fav ? "fill-primary active:fill-none" : "fill-none active:fill-red-600"}`}
+        className={`icon icon-tabler icon-tabler-heart absolute right-2 top-[30px] fill-none text-primary opacity-50 active:animate-ping ${fav ? "fill-primary active:fill-none" : "fill-none active:fill-red-600"}`}
         width={24}
         height={24}
         viewBox="0 0 24 24"
