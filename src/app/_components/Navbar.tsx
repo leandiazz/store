@@ -187,7 +187,7 @@ export default function Navbar() {
             </Sheet>
             <NavigationMenuItem className="md:pl-12" asChild>
               <Link href="/" legacyBehavior passHref>
-                <p className="cursor-pointer pl-16 font-logo text-2xl text-primary md:text-3xl">
+                <p className="cursor-pointer font-logo text-2xl text-primary md:pl-16 md:text-3xl">
                   Cruel Summer
                 </p>
               </Link>
