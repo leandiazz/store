@@ -19,7 +19,7 @@ export default function loading() {
   return (
     <div className="mt-4 p-8">
       <div className="flex flex-row">
-        <div className="ml-10 h-10 w-[200px] animate-pulse rounded-md bg-primary/10" />
+        <div className="ml-10 h-10 w-44 animate-pulse rounded-md bg-primary/10 md:w-[200px]" />
         <div className="ml-2 h-10 w-[80px] animate-pulse rounded-md bg-primary/10" />
       </div>
       <div className="m-0 mt-5 grid list-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

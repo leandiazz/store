@@ -13,9 +13,14 @@ export default async function page({ searchParams }: { searchParams: { q: string
   }
 
   return (
-    <div className="relative mt-4 p-8 md:p-8">
+    <div className="relative  p-8 md:p-8">
       <form action={searchActions} className="ml-10 flex">
-        <Input defaultValue={searchParams.q || ""} className="w-[200px]" name="q" type="search" />
+        <Input
+          defaultValue={searchParams.q || ""}
+          className="w-44 md:w-[200px]"
+          name="q"
+          type="search"
+        />
         <Button type="submit" className="ml-2">
           Buscar
         </Button>
