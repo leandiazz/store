@@ -29,7 +29,7 @@ export default function ProductCard(producto: Product) {
 
         <p className="font-sans antialiased">
           <strong className="text-lg">{`${formatPrice(producto.priceDiscounted)} `}</strong>
-          <s className="text-sm">{`${formatPrice(producto.price)}`}</s>
+          {producto.discount ? <s className="text-sm">{`${formatPrice(producto.price)}`}</s> : null}
         </p>
         <DynamicFavoriteButton id={producto.id} />
       </footer>
