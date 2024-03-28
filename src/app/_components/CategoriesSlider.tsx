@@ -16,26 +16,31 @@ const targets = [
     id: 1,
     src: "/tops.webp",
     title: "Tops",
+    href: "top",
   },
   {
     id: 2,
     src: "/faldas.webp",
     title: "Faldas",
+    href: "falda",
   },
   {
     id: 3,
     src: "/pantalones.webp",
     title: "Pantalones",
+    href: "pantalon",
   },
   {
     id: 4,
     src: "/remerones.webp",
-    title: "Remerones",
+    title: "Remeras",
+    href: "remera",
   },
   {
     id: 5,
     src: "/vestidos.webp",
     title: "Vestidos",
+    href: "vestido",
   },
 ];
 
@@ -59,7 +64,7 @@ export const CategoriesSlider = () => {
                     <Link
                       href={{
                         pathname: "/productos",
-                        query: { q: `${target.title}` },
+                        query: { q: `${target.href}` },
                       }}
                     >
                       <Image
@@ -75,7 +80,7 @@ export const CategoriesSlider = () => {
                     <Link
                       href={{
                         pathname: "/productos",
-                        query: { q: `${target.title}` },
+                        query: { q: `${target.href}` },
                       }}
                     >
                       {target.title}
