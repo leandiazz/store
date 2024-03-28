@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     siteName: "Cruel Summer",
     images: [
       {
-        url: "https://cruelsummer.vercel.app/PIC.webp",
-        width: 560,
-        height: 365,
+        url: "https://cruelsummer.vercel.app/metaimage.webp",
+        width: 1200,
+        height: 630,
       },
     ],
     locale: "es_AR",
