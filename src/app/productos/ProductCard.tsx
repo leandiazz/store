@@ -23,7 +23,7 @@ export default function ProductCard(producto: Product) {
         </Link>
       </header>
       <footer className="relative mt-2 h-20 text-center">
-        <h1 className="text-xl">
+        <h1 className="text-xl product-title">
           <Link href={`/productos/${producto.id}`}>{producto.name}</Link>
         </h1>
 

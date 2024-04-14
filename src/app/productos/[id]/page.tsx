@@ -52,7 +52,7 @@ export default async function page({ params: { id } }: Params) {
           </Carousel>
         </header>
         <aside className="flex w-full flex-col items-start pt-10 md:w-[30%] md:pt-20">
-          <h1 className="w-max text-4xl">{producto.name}</h1>
+          <h1 className="w-max text-4xl product-title">{producto.name}</h1>
           <h2 className="font-sans antialiased">
             <strong className="text-lg">{`${formatPrice(producto.priceDiscounted)} `}</strong>
             {producto.discount ? (
